@@ -1,0 +1,6 @@
+framework module KMTIMSDK {
+  umbrella header "KMTIMSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

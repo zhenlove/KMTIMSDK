@@ -1,4 +1,5 @@
 # KMTIMSDK
+<<<<<<< HEAD
 
 [![CI Status](https://img.shields.io/travis/zhenlove/KMTIMSDK.svg?style=flat)](https://travis-ci.org/zhenlove/KMTIMSDK)
 [![Version](https://img.shields.io/cocoapods/v/KMTIMSDK.svg?style=flat)](https://cocoapods.org/pods/KMTIMSDK)
@@ -27,3 +28,6 @@ zhenlove, 121910347@qq.com
 ## License
 
 KMTIMSDK is available under the MIT license. See the LICENSE file for more info.
+=======
+集成TIMSDK
+>>>>>>> 76f171932a578577cd2bee88c6e288906ad59736

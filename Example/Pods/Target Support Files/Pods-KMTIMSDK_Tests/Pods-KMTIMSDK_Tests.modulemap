@@ -1,0 +1,6 @@
+framework module Pods_KMTIMSDK_Tests {
+  umbrella header "Pods-KMTIMSDK_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
