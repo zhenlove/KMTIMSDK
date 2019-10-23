@@ -4,7 +4,7 @@ platform :ios, '9.0'
 
 target 'KMTIMSDK_Example' do
   
-  pod 'KMAgoraRtc', :path => '../KMAgoraRtc/'
+  pod 'KMAgoraRtc', :git => 'https://github.com/zhenlove/KMAgoraRtc.git'
   pod 'KMTIMSDK', :path => '../'
 
 end
