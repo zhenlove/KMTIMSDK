@@ -1,4 +1,4 @@
-# KMRouter
+# KMAgoraRtc
 
 [![CI Status](https://img.shields.io/travis/zhenlove/KMRouter.svg?style=flat)](https://travis-ci.org/zhenlove/KMRouter)
 [![Version](https://img.shields.io/cocoapods/v/KMRouter.svg?style=flat)](https://cocoapods.org/pods/KMRouter)
@@ -13,7 +13,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-KMRouter is available through [CocoaPods](https://cocoapods.org). To install
+KMAgoraRtc is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
@@ -26,4 +26,4 @@ zhenlove, 121910347@qq.com
 
 ## License
 
-KMRouter is available under the MIT license. See the LICENSE file for more info.
+KMAgoraRtc is available under the MIT license. See the LICENSE file for more info.
