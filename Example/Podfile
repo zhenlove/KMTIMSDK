@@ -1,0 +1,10 @@
+use_frameworks!
+inhibit_all_warnings!
+platform :ios, '9.0'
+
+target 'KMTIMSDK_Example' do
+  
+  pod 'KMAgoraRtc', :path => '../KMAgoraRtc/'
+  pod 'KMTIMSDK', :path => '../'
+
+end
