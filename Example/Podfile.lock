@@ -1,63 +1,82 @@
 PODS:
-  - AgoraRtcEngine_iOS (2.9.1)
+  - AgoraRtcEngine_iOS (3.0.0)
+  - Alamofire (4.9.1)
+  - Bagel (1.3.2):
+    - CocoaAsyncSocket
+  - CocoaAsyncSocket (7.6.3)
   - ISVImageScrollView (0.1.2)
-  - KMAgoraRtc (0.0.1):
+  - KMAgoraRtc (1.0.1):
     - AgoraRtcEngine_iOS
     - SnapKit
   - KMTIMSDK (0.1.0):
+    - TXIMSDK_TUIKit_iOS
+  - Masonry (1.1.0)
+  - MJExtension (3.2.1)
+  - MMLayout (0.2.0)
+  - ReactiveObjC (3.1.1)
+  - SDWebImage (5.2.5):
+    - SDWebImage/Core (= 5.2.5)
+  - SDWebImage/Core (5.2.5)
+  - SnapKit (4.2.0)
+  - Toast (4.0.0)
+  - TXIMSDK_iOS (4.6.101)
+  - TXIMSDK_TUIKit_iOS (4.6.58):
     - ISVImageScrollView
-    - MMLayout
+    - MMLayout (= 0.2.0)
     - ReactiveObjC
     - SDWebImage
     - Toast
     - TXIMSDK_iOS
-  - MMLayout (0.2.0)
-  - ReactiveObjC (3.1.1)
-  - SDWebImage (5.2.3):
-    - SDWebImage/Core (= 5.2.3)
-  - SDWebImage/Core (5.2.3)
-  - SnapKit (4.2.0)
-  - Toast (4.0.0)
-  - TXIMSDK_iOS (4.5.55)
 
 DEPENDENCIES:
-  - KMAgoraRtc (from `https://github.com/zhenlove/KMAgoraRtc.git`)
+  - Alamofire (= 4.9.1)
+  - Bagel (= 1.3.2)
+  - CocoaAsyncSocket (= 7.6.3)
+  - KMAgoraRtc
   - KMTIMSDK (from `../`)
+  - Masonry (= 1.1.0)
+  - MJExtension (= 3.2.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AgoraRtcEngine_iOS
+    - Alamofire
+    - Bagel
+    - CocoaAsyncSocket
     - ISVImageScrollView
+    - KMAgoraRtc
+    - Masonry
+    - MJExtension
     - MMLayout
     - ReactiveObjC
     - SDWebImage
     - SnapKit
     - Toast
     - TXIMSDK_iOS
+    - TXIMSDK_TUIKit_iOS
 
 EXTERNAL SOURCES:
-  KMAgoraRtc:
-    :git: https://github.com/zhenlove/KMAgoraRtc.git
   KMTIMSDK:
     :path: "../"
 
-CHECKOUT OPTIONS:
-  KMAgoraRtc:
-    :commit: 52f6ec7db10e0625c31e6cac0fc4d9fbf1be0f20
-    :git: https://github.com/zhenlove/KMAgoraRtc.git
-
 SPEC CHECKSUMS:
-  AgoraRtcEngine_iOS: b2eedd8f9ab47b71163f3285e836bd23feb43fff
+  AgoraRtcEngine_iOS: faaa446c165609e055f7ff56268ccb429e081e57
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Bagel: 199e0105ac694d6eee9db54dd006c940da6ce81b
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ISVImageScrollView: ba511d12a1661b40feb8921309c0854bf93ec749
-  KMAgoraRtc: b552ef716c3d16d999596ee2f62a7273dc20d8bf
-  KMTIMSDK: c9732e865f38dbdd6b2dde31276483808efeb379
+  KMAgoraRtc: 1290e6a00c3e53f59abefe9ad82c366d6d314116
+  KMTIMSDK: 6764c458cd491455b08df03458d4c9dea2702134
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
+  SDWebImage: 4eabf2fa6695c95c47724214417a9c036c965e4a
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TXIMSDK_iOS: add67201c64d0a8668e4bfab4d21f83e8075d00a
+  TXIMSDK_iOS: f080472d4c10cb2b0bc58f86f340f1e8a49d34ad
+  TXIMSDK_TUIKit_iOS: 07d410f70bd3601506d1b0f219174fc1eed76ef9
 
-PODFILE CHECKSUM: 4e366c2d0f90d24825723bd0c7c6d1dca066cfac
+PODFILE CHECKSUM: 1eb97fffdb0686b3505749e18bce40386f3beaa4
 
-COCOAPODS: 1.7.0
+COCOAPODS: 1.8.4

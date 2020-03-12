@@ -6,18 +6,17 @@
 //
 
 #import "KMChatController.h"
-#import <ImSDK/ImSDK.h>
-#import "TUIKit.h"
-#import "THeader.h"
-#import "THelper.h"
-#import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "ReactiveObjC/ReactiveObjC.h"
-#import "MMLayout/UIView+MMLayout.h"
-#import "TUIImageMessageCellData.h"
-#import "TUIInputController.h"
-#import "TUIMessageController.h"
-#import "TUIConversationCell.h"
+
+#import <ImSDK/ImSDK.h>
+#import <TXIMSDK_TUIKit_iOS/TUIKit.h>
+#import <TXIMSDK_TUIKit_iOS/THelper.h>
+#import <TXIMSDK_TUIKit_iOS/TUIImageMessageCellData.h>
+
+#import <ReactiveObjC/ReactiveObjC.h>
+
+
+
 
 @interface KMChatController ()<TMessageControllerDelegate, TInputControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) TIMConversation *conversation;

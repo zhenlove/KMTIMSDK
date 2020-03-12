@@ -22,15 +22,16 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '9.0'
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
   s.libraries    = 'stdc++'
-  s.source_files = 'KMTIMSDK/Classes/**/*.{h,m,mm}'
+  s.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
   
   s.requires_arc = true
-  s.dependency 'MMLayout'
-  s.dependency 'SDWebImage'
-  s.dependency 'TXIMSDK_iOS'
-  s.dependency 'ReactiveObjC'
-  s.dependency 'Toast'
-  s.dependency 'ISVImageScrollView'
-  s.vendored_libraries = ['**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrnb/libopencore-amrnb.a', '**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrwb/libopencore-amrwb.a']
-  s.resource = ['**/KMTIMSDK/Resources/TUIKitFace.bundle','**/KMTIMSDK/Resources/TUIKitResource.bundle']
+  s.dependency 'TXIMSDK_TUIKit_iOS'
+#  s.dependency 'MMLayout'
+#  s.dependency 'SDWebImage'
+#  s.dependency 'TXIMSDK_iOS'
+#  s.dependency 'ReactiveObjC'
+#  s.dependency 'Toast'
+#  s.dependency 'ISVImageScrollView'
+#  s.vendored_libraries = ['**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrnb/libopencore-amrnb.a', '**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrwb/libopencore-amrwb.a']
+#  s.resource = ['**/KMTIMSDK/Resources/TUIKitFace.bundle','**/KMTIMSDK/Resources/TUIKitResource.bundle']
 end

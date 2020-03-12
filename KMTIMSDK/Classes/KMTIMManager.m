@@ -6,8 +6,9 @@
 //
 
 #import "KMTIMManager.h"
-#import "TUIKit.h"
 #import "KMChatController.h"
+#import <TXIMSDK_TUIKit_iOS/TUIKit.h>
+
 @interface KMTIMManager()
 
 @property(nonatomic,strong) TIMLoginParam * loginParam;
@@ -36,7 +37,7 @@
 }
 
 - (void)setupWithAppId:(NSInteger)sdkAppId {
-    [[TUIKit sharedInstance] setupWithAppId:sdkAppId];
+    [[TUIKit sharedInstance] setupWithAppId:sdkAppId logLevel:TIM_LOG_NONE];
 }
 
 -(TIMLoginParam *)loginParam {
@@ -46,7 +47,8 @@
     return _loginParam;
 }
 
-- (void)setupWithUserSig:(NSString *)userSig andIdentifier:(NSString *)identifier {
+- (void)setupWithAppId:(NSInteger)sdkAppId UserSig:(NSString *)userSig andIdentifier:(NSString *)identifier {
+    [self setupWithAppId:sdkAppId];
     self.loginParam.userSig = userSig;
     self.loginParam.identifier = identifier;
 }

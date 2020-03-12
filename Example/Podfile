@@ -1,10 +1,15 @@
-use_frameworks!
+#use_frameworks!
 inhibit_all_warnings!
 platform :ios, '9.0'
 
 target 'KMTIMSDK_Example' do
   
-  pod 'KMAgoraRtc', :git => 'https://github.com/zhenlove/KMAgoraRtc.git'
+#  pod 'KMAgoraRtc', :git => 'https://github.com/zhenlove/KMAgoraRtc.git'
+  pod 'KMAgoraRtc'
   pod 'KMTIMSDK', :path => '../'
-
+  pod 'Alamofire','4.9.1'
+  pod 'Masonry','1.1.0'
+  pod 'MJExtension','3.2.1'
+  pod 'CocoaAsyncSocket','7.6.3', :modular_headers => true, :configurations => ['Debug']
+  pod 'Bagel','1.3.2', :configurations => ['Debug']
 end

@@ -17,9 +17,7 @@ typedef void (^KMTIMFail)(int code, NSString * msg);
 
 + (instancetype)sharedInstance;
 
-- (void)setupWithAppId:(NSInteger)sdkAppId;
-
-- (void)setupWithUserSig:(NSString *)userSig andIdentifier:(NSString *)identifier;
+- (void)setupWithAppId:(NSInteger)sdkAppId UserSig:(NSString *)userSig andIdentifier:(NSString *)identifier;
 
 - (int)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail;
 

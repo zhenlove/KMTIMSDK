@@ -14,4 +14,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface KMUserInfoModel : NSObject
+
+@property (nonatomic, assign) NSInteger CheckState;
+@property (nonatomic, assign) BOOL ConsulAptitude;
+@property (nonatomic, assign) NSInteger Gender;
+@property (nonatomic, assign) NSInteger IDType;
+@property (nonatomic, assign) NSInteger Identifier;
+@property (nonatomic, assign) BOOL IsNewUser;
+@property (nonatomic, assign) BOOL IsOpenPharmacistSF;
+@property (nonatomic, strong) NSString * MemberID;
+@property (nonatomic, strong) NSString * Mobile;
+@property (nonatomic, strong) NSString * OrgID;
+@property (nonatomic, assign) NSInteger PharmacistType;
+@property (nonatomic, strong) NSString * PhotoUrl;
+@property (nonatomic, assign) BOOL RecipeDoctor;
+@property (nonatomic, strong) NSString * RegTime;
+@property (nonatomic, strong) NSString * UserCNName;
+@property (nonatomic, strong) NSString * UserENName;
+@property (nonatomic, strong) NSString * UserID;
+@property (nonatomic, strong) NSString * UserToken;
+@property (nonatomic, assign) NSInteger UserType;
+@end
+
+@interface KMIMConfigModel : NSObject
+@property (nonatomic, copy) NSString * sdkAppID;
+@property (nonatomic, copy) NSString * userSig;
+@property (nonatomic, copy) NSString * identifier;
+@property (nonatomic, copy) NSString * accountType;
+
+@end
+
 NS_ASSUME_NONNULL_END
