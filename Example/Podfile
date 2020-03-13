@@ -3,10 +3,8 @@ inhibit_all_warnings!
 platform :ios, '9.0'
 
 target 'KMTIMSDK_Example' do
-  
-#  pod 'KMAgoraRtc', :git => 'https://github.com/zhenlove/KMAgoraRtc.git'
-  pod 'KMAgoraRtc'
   pod 'KMTIMSDK', :path => '../'
+  pod 'KMAgoraRtc','1.0.1'
   pod 'Alamofire','4.9.1'
   pod 'Masonry','1.1.0'
   pod 'MJExtension','3.2.1'

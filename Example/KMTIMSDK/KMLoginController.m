@@ -8,10 +8,11 @@
 
 #import "KMLoginController.h"
 #import "KMH5WebView.h"
-#import <KMTIMSDK/KMTIMManager.h>
+#import <KMTIMSDK/KMTIMSDK.h>
 #import "KMTIMSDK_Example-Swift.h"
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
+@import KMAgoraRtc;
 @implementation KMUserInfoModel
 
 @end
@@ -36,7 +37,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+//    self.navigationController.navigationBarHidden = YES;
     [KMServiceModel setupParameterWithAppid:@"KMZSYY"
                                   appsecret:@"KMZSYY#2016@20161010$$!##"
                                      appkey:@"KMZSYY2016"
@@ -120,7 +122,7 @@
     [[KMTIMManager sharedInstance] loginOfSucc:^{
         NSLog(@"IM登录成功");
     } fail:^(int code, NSString * _Nonnull msg) {
-        NSLog(@"IM登录失败");
+        NSLog(@"IM登录失败 code:%d msg:%@",code,msg);
     }];
 }
 // 获取媒体配置
@@ -143,9 +145,16 @@
  js回调图文咨询
  */
 -(void)jsCallChatWithParameterDictionary:(NSDictionary *)pDictionary{
-//    NSString * ChanelId = [[pDictionary objectForKey:@"ChanelId"] stringValue];
-//    NSInteger  ConsultState = [[pDictionary objectForKey:@"ConsultState"] integerValue];
-//    NSString * DoctorName = [pDictionary objectForKey:@"DoctorName"];
+    NSString * ChanelId = [[pDictionary objectForKey:@"ChanelId"] stringValue];
+    NSInteger  ConsultState = [[pDictionary objectForKey:@"ConsultState"] integerValue];
+    NSString * DoctorName = [pDictionary objectForKey:@"DoctorName"];
+        
+    KMChatController  * chatController = [[KMChatController alloc]init];
+    chatController.convId = ChanelId;
+    chatController.imTitle = [DoctorName stringByAppendingString:@"-医生"];
+    chatController.consulationState = ConsultState;
+    [self.navigationController pushViewController:chatController animated:true];
+    
 }
 
 /**

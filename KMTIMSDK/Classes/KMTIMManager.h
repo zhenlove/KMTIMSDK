@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KMChatController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,14 +23,6 @@ typedef void (^KMTIMFail)(int code, NSString * msg);
 - (int)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail;
 
 - (int)logout:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail;
-
-/// 进入诊室
-/// @param channleId
-- (UIViewController *)enterClinicWithChannleId:(NSString *)channleId;
-
-/// 进入IM
-/// @param channleId
-- (UIViewController *)enterMessageRoomWithChannleId:(NSString *)channleId;
 
 @end
 

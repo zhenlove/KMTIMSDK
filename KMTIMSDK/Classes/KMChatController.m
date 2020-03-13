@@ -15,10 +15,15 @@
 
 #import <ReactiveObjC/ReactiveObjC.h>
 
+#import "KMURLMessageCellData.h"
+#import "KMURLMessageCell.h"
+#import "KMPatientInfoMessageCell.h"
+#import "KMPatientInfoMessageCellData.h"
 
-
+#import "KMPatientInfoVC.h"
 
 @interface KMChatController ()<TMessageControllerDelegate, TInputControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (nonatomic, strong) TIMConversation *conversation;
 /**
  *  TUIKit 聊天消息控制器
@@ -47,18 +52,14 @@
 
 @implementation KMChatController
 
-- (instancetype)initWithConversation:(TIMConversation *)conversation;
+- (instancetype)init
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super init];
     if (self) {
-        _conversation = conversation;
-
         NSMutableArray *moreMenus = [NSMutableArray array];
         [moreMenus addObject:[TUIInputMoreCellData photoData]];
         [moreMenus addObject:[TUIInputMoreCellData pictureData]];
         _moreMenus = moreMenus;
-
-
     }
     return self;
 }
@@ -78,6 +79,9 @@
 - (void)setupViews
 {
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.conversation = [[TIMManager sharedInstance] getConversation:TIM_GROUP receiver:self.convId];
+    self.title = self.imTitle;
 
     @weakify(self)
     //message
@@ -192,6 +196,51 @@
 //    if ([self.delegate respondsToSelector:@selector(chatController:onNewMessage:)]) {
 //        return [self.delegate chatController:self onNewMessage:data];
 //    }
+//    return nil;
+    TIMElem *elem = [data getElem:0];
+    if([elem isKindOfClass:[TIMCustomElem class]]){
+        TIMCustomElem * customElem = (TIMCustomElem *)elem;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:customElem.data  options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"自定义消息类型：%@",customElem.ext);
+        if ([customElem.ext isEqualToString:@"User.DiseaseDesc"]) { //病情描述
+            KMPatientInfoMessageCellData * cellData = [[KMPatientInfoMessageCellData alloc]initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+            cellData.memberName = dic[@"MemberName"];
+            cellData.age = dic[@"Age"];
+            cellData.gender = [dic[@"Gender"] boolValue] ? @"女":@"男";
+            cellData.consultContent = dic[@"ConsultContent"];
+            cellData.userFile = dic[@"UserFiles"];
+            return cellData;
+//            KMURLMessageCellData *cellData = [[KMURLMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+//            cellData.text = @"查看详情>>";
+//            cellData.link = @"https://cloud.tencent.com/product/im";
+//            return cellData;
+        }
+        if ([customElem.ext isEqualToString:@"Room.DurationChanged"]) { //房间持续时间变更
+            
+        }
+        if ([customElem.ext isEqualToString:@"Room.StateChanged"]) { //房间状态
+            
+        }
+        if ([customElem.ext isEqualToString:@"AIMed.Recommend"]) { //推荐
+            
+        }
+        if ([customElem.ext isEqualToString:@"Notice"]) { //通知
+            
+        }
+        if ([customElem.ext isEqualToString:@"Order.Buy.Recipe"] || [customElem.ext isEqualToString:@"Diagnose.Summary.Submit"]) { //购买处方
+            
+        }
+        if ([customElem.ext isEqualToString:@"Recipe.Preview"]) { //处方预览
+            
+        }
+        if ([customElem.ext isEqualToString:@"User.TransferTreatment"]) { //当前看诊医生已离线请稍候
+            
+        }
+        if ([customElem.ext isEqualToString:@"Room.Hangup"]) { //挂断
+            
+        }
+        
+    }
     return nil;
 }
 /// 展示自定义个性化消息
@@ -199,6 +248,18 @@
 {
 //    if ([self.delegate respondsToSelector:@selector(chatController:onShowMessageData:)]) {
 //        return [self.delegate chatController:self onShowMessageData:data];
+//    }
+//    return nil;
+    if ([data isKindOfClass:[KMPatientInfoMessageCellData class]]) {
+        KMPatientInfoMessageCell * cell = [[KMPatientInfoMessageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"KMPatientInfoMessageCell"];
+        [cell fillWithData:data];
+        return cell;
+    }
+    
+//    if ([data isKindOfClass:[KMURLMessageCellData class]]) {
+//        KMURLMessageCell *myCell = [[KMURLMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
+//        [myCell fillWithData:(KMURLMessageCellData *)data];
+//        return myCell;
 //    }
     return nil;
 }
@@ -220,6 +281,17 @@
 //        [self.delegate chatController:self onSelectMessageContent:cell];
 //        return;
 //    }
+    if ([cell isKindOfClass:[KMPatientInfoMessageCell class]]) {
+        KMPatientInfoMessageCellData * cellData = (KMPatientInfoMessageCellData *)cell.messageData;
+        KMPatientInfoVC * infoVC  = [[KMPatientInfoVC alloc] init];
+        infoVC.patientName = cellData.memberName;
+        infoVC.age = cellData.age;
+        infoVC.sex = cellData.gender;
+        infoVC.desc = cellData.consultContent;
+        infoVC.pictureArray = cellData.userFile;
+        infoVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:infoVC animated:YES];
+    }
 }
 
 

@@ -7,22 +7,31 @@
 
 #import <UIKit/UIKit.h>
 
-//#import "TIMConversation.h"
+/**咨询状态 （-1 default 0-未筛选、1-未领取、2-未回复、4-已回复、5-已完成）*/
+//咨询状态(0-未筛选、1-未领取、2-已领取、3-未回复、4-已回复、5-已完成)
+typedef NS_ENUM(NSInteger, KMConsultationState) {
+    /**默认状态 -1*/
+    KMConsultationState_Default = -1,//
+    /**未筛选 0*/
+    KMConsultationState_Unfiltered = 0,//
+    /**未领取 1*/
+    KMConsultationState_Unclaimed = 1,//
+    /**已领取 2*/
+    KMConsultationState_Claimed = 2,//
+    /**未回复 3*/
+    KMConsultationState_NotReply = 3,//
+    /**已回复 4*/
+    KMConsultationState_Replied = 4,//
+    /**已完成 5*/
+    KMConsultationState_Finished = 5,//
+};
 
 NS_ASSUME_NONNULL_BEGIN
-@class TIMConversation;
 @interface KMChatController : UIViewController
-
-
-/**
- *  初始化函数。
- *  根据所选会话初始化当前界面。
- *  初始化内容包括对资源图标的加载、历史消息的恢复，以及 MessageController、InputController 和“更多”视图的相关初始化操作。
- *
- *  @param conversation 会话，提供初始化所需的会话信息
- */
-- (instancetype)initWithConversation:(TIMConversation *)conversation;
-
+/** 咨询状态 */
+@property (nonatomic, assign) KMConsultationState consulationState;
+@property (nonatomic, copy) NSString *convId;
+@property (nonatomic, copy) NSString *imTitle;
 
 
 @end

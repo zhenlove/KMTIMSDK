@@ -23,12 +23,14 @@ TODO: Add long description of the pod here.
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
   s.libraries    = 'stdc++'
   s.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
-  
+  s.resource_bundles = {
+    'KMTIMImage' => ['KMTIMSDK/Assets/*']
+  }
   s.requires_arc = true
   s.dependency 'TXIMSDK_TUIKit_iOS'
-#  s.dependency 'MMLayout'
-#  s.dependency 'SDWebImage'
-#  s.dependency 'TXIMSDK_iOS'
+  s.dependency 'Masonry'
+  s.dependency 'SDWebImage'
+  s.dependency 'ReactiveObjC'
 #  s.dependency 'ReactiveObjC'
 #  s.dependency 'Toast'
 #  s.dependency 'ISVImageScrollView'

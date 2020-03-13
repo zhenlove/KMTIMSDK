@@ -38,6 +38,11 @@
 
 - (void)setupWithAppId:(NSInteger)sdkAppId {
     [[TUIKit sharedInstance] setupWithAppId:sdkAppId logLevel:TIM_LOG_NONE];
+    
+    TUIKitConfig * config = [TUIKitConfig defaultConfig];
+    config.avatarType = TAvatarTypeRadiusCorner;
+    config.avatarCornerRadius = 6.f;
+    config.faceGroups = @[config.faceGroups.firstObject];
 }
 
 -(TIMLoginParam *)loginParam {
@@ -60,16 +65,5 @@
 
 - (int)logout:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
     [[TIMManager sharedInstance] logout:succ fail:fail];
-}
-
-- (UIViewController *)enterClinicWithChannleId:(NSString *)channleId {
-    
-}
-
-- (UIViewController *)enterMessageRoomWithChannleId:(NSString *)channleId {
-    TIMConversation *conv = [[TIMManager sharedInstance] getConversation:TIM_GROUP receiver:channleId];
-    KMChatController * vc = [[KMChatController alloc] initWithConversation:conv];
-//    [weakSelf.navigationController pushViewController:vc animated:YES];
-    return vc;
 }
 @end
