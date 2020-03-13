@@ -52,6 +52,35 @@
 
 @implementation KMChatController
 
+-(TIMConversation *)conversation {
+    if (!_conversation) {
+        _conversation = [[TIMManager sharedInstance] getConversation:TIM_GROUP receiver:self.convId];
+    }
+    return _conversation;
+}
+-(TUIMessageController *)messageController {
+    if (!_messageController) {
+        _messageController = [[TUIMessageController alloc] init];
+        _messageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight);
+        _messageController.delegate = self;
+        [self addChildViewController:_messageController];
+        [_messageController setConversation:self.conversation];
+    }
+    return _messageController;
+}
+-(TUIInputController *)inputController {
+    if (!_inputController) {
+        _inputController = [[TUIInputController alloc] init];
+        _inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height + Bottom_SafeHeight);
+        _inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        _inputController.delegate = self;
+        [_inputController.moreView setData:_moreMenus];
+        [self addChildViewController:_inputController];
+        
+    }
+    return _inputController;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -79,30 +108,10 @@
 - (void)setupViews
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.conversation = [[TIMManager sharedInstance] getConversation:TIM_GROUP receiver:self.convId];
-    self.title = self.imTitle;
 
-    @weakify(self)
-    //message
-    _messageController = [[TUIMessageController alloc] init];
-    _messageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight);
-    _messageController.delegate = self;
-    [self addChildViewController:_messageController];
-    [self.view addSubview:_messageController.view];
-    [_messageController setConversation:_conversation];
+    [self.view addSubview:self.messageController.view];
+    [self.view addSubview:self.inputController.view];
 
-    //input
-    _inputController = [[TUIInputController alloc] init];
-    _inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height + Bottom_SafeHeight);
-    _inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    _inputController.delegate = self;
-    [RACObserve(self, moreMenus) subscribeNext:^(NSArray *x) {
-        @strongify(self)
-        [self.inputController.moreView setData:x];
-    }];
-    [self addChildViewController:_inputController];
-    [self.view addSubview:_inputController.view];
 
     TIMMessageDraft *draft = [self.conversation getDraft];
     if(draft){
@@ -110,7 +119,7 @@
             TIMElem *elem = [draft getElem:i];
             if([elem isKindOfClass:[TIMTextElem class]]){
                 TIMTextElem *text = (TIMTextElem *)elem;
-                _inputController.inputBar.inputTextView.text = text.text;
+                self.inputController.inputBar.inputTextView.text = text.text;
                 [self.conversation setDraft:nil];
                 break;
             }
@@ -260,11 +269,7 @@
     if ([cell isKindOfClass:[KMPatientInfoMessageCell class]]) {
         KMPatientInfoMessageCellData * cellData = (KMPatientInfoMessageCellData *)cell.messageData;
         KMPatientInfoVC * infoVC  = [[KMPatientInfoVC alloc] init];
-        infoVC.patientName = cellData.memberName;
-        infoVC.age = cellData.age;
-        infoVC.sex = cellData.gender;
-        infoVC.desc = cellData.consultContent;
-        infoVC.pictureArray = cellData.userFile;
+        infoVC.userInfoDic = cellData.userInfoDic;
         infoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:infoVC animated:YES];
     }

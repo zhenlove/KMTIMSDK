@@ -15,5 +15,5 @@
 @property (nonatomic, copy) NSString  *sex;          //性别
 @property (nonatomic, copy) NSString  *desc;         //病情描述
 @property (nonatomic, strong) NSArray *pictureArray; //图片数组
-
+@property (nonatomic, strong) NSDictionary * userInfoDic;
 @end

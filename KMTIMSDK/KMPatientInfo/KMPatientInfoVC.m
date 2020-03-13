@@ -62,6 +62,16 @@
     }
     return _headerView;
 }
+-(void)setUserInfoDic:(NSDictionary *)userInfoDic {
+    _userInfoDic = userInfoDic;
+    
+    self.patientName = userInfoDic[@"MemberName"];
+    self.age = userInfoDic[@"Age"];
+    NSArray * genderArr = @[@"男",@"女",@"未知"];//性别（0-男、1-女、2-未知)
+    self.sex = genderArr[[userInfoDic[@"Gender"] integerValue]];
+    self.desc = userInfoDic[@"ConsultContent"];
+    self.pictureArray = userInfoDic[@"UserFiles"];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

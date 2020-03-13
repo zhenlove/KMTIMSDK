@@ -158,7 +158,7 @@
         
     KMChatController  * chatController = [[KMChatController alloc]init];
     chatController.convId = ChanelId;
-    chatController.imTitle = [DoctorName stringByAppendingString:@"-医生"];
+    chatController.title = [DoctorName stringByAppendingString:@"-医生"];
     chatController.consulationState = ConsultState;
     [self.navigationController pushViewController:chatController animated:true];
     

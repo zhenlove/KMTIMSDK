@@ -31,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** 咨询状态 */
 @property (nonatomic, assign) KMConsultationState consulationState;
 @property (nonatomic, copy) NSString *convId;
-@property (nonatomic, copy) NSString *imTitle;
 
 
 @end
