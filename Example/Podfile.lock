@@ -9,6 +9,17 @@ PODS:
     - AgoraRtcEngine_iOS
     - SnapKit
   - KMTIMSDK (0.1.0):
+    - KMAgoraRtc
+    - KMTIMSDK/KMIMCustomCell (= 0.1.0)
+    - KMTIMSDK/KMPatientInfo (= 0.1.0)
+    - ReactiveObjC
+    - TXIMSDK_TUIKit_iOS
+  - KMTIMSDK/KMIMCustomCell (0.1.0):
+    - KMAgoraRtc
+    - ReactiveObjC
+    - TXIMSDK_TUIKit_iOS
+  - KMTIMSDK/KMPatientInfo (0.1.0):
+    - KMAgoraRtc
     - Masonry
     - ReactiveObjC
     - SDWebImage
@@ -17,25 +28,24 @@ PODS:
   - MJExtension (3.2.1)
   - MMLayout (0.2.0)
   - ReactiveObjC (3.1.1)
-  - SDWebImage (5.2.5):
-    - SDWebImage/Core (= 5.2.5)
-  - SDWebImage/Core (5.2.5)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
   - SnapKit (4.2.0)
   - Toast (4.0.0)
-  - TXIMSDK_iOS (4.6.101)
-  - TXIMSDK_TUIKit_iOS (4.6.58):
-    - ISVImageScrollView
+  - TXIMSDK_iOS (4.6.102)
+  - TXIMSDK_TUIKit_iOS (4.6.100):
+    - ISVImageScrollView (= 0.1.2)
     - MMLayout (= 0.2.0)
-    - ReactiveObjC
-    - SDWebImage
-    - Toast
+    - ReactiveObjC (= 3.1.1)
+    - SDWebImage (= 5.5.2)
+    - Toast (= 4.0.0)
     - TXIMSDK_iOS
 
 DEPENDENCIES:
   - Alamofire (= 4.9.1)
   - Bagel (= 1.3.2)
   - CocoaAsyncSocket (= 7.6.3)
-  - KMAgoraRtc (= 1.0.1)
   - KMTIMSDK (from `../`)
   - Masonry (= 1.1.0)
   - MJExtension (= 3.2.1)
@@ -69,17 +79,17 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ISVImageScrollView: ba511d12a1661b40feb8921309c0854bf93ec749
   KMAgoraRtc: 1290e6a00c3e53f59abefe9ad82c366d6d314116
-  KMTIMSDK: 760cee6de00b20a16acd54558850627fe08d38d7
+  KMTIMSDK: 8dee8cb765965bb9b1232e8fe22be05c25732caa
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: 4eabf2fa6695c95c47724214417a9c036c965e4a
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TXIMSDK_iOS: f080472d4c10cb2b0bc58f86f340f1e8a49d34ad
-  TXIMSDK_TUIKit_iOS: 07d410f70bd3601506d1b0f219174fc1eed76ef9
+  TXIMSDK_iOS: e2f691308b9f27f51ba93d53af71254cfe1bfa5c
+  TXIMSDK_TUIKit_iOS: 7c5a6556929b590e3d2cfb85a865a3c5b28f4d87
 
-PODFILE CHECKSUM: 813dd87ca132807054d39e6512adddcdbdde1f63
+PODFILE CHECKSUM: d8d152f9a80d011ebd8059d65a935ac75e512eab
 
 COCOAPODS: 1.8.4

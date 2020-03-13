@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * gender;
 @property (nonatomic, copy) NSString * consultContent;
 @property (nonatomic, strong) NSArray * userFile;
+@property (nonatomic, strong) NSDictionary * userInfoDic;
 @end
 
 NS_ASSUME_NONNULL_END

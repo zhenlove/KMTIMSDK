@@ -193,10 +193,7 @@
 /// 接收新消息时的回调，用于甄别自定义消息
 - (TUIMessageCellData *)messageController:(TUIMessageController *)controller onNewMessage:(TIMMessage *)data
 {
-//    if ([self.delegate respondsToSelector:@selector(chatController:onNewMessage:)]) {
-//        return [self.delegate chatController:self onNewMessage:data];
-//    }
-//    return nil;
+
     TIMElem *elem = [data getElem:0];
     if([elem isKindOfClass:[TIMCustomElem class]]){
         TIMCustomElem * customElem = (TIMCustomElem *)elem;
@@ -204,16 +201,10 @@
         NSLog(@"自定义消息类型：%@",customElem.ext);
         if ([customElem.ext isEqualToString:@"User.DiseaseDesc"]) { //病情描述
             KMPatientInfoMessageCellData * cellData = [[KMPatientInfoMessageCellData alloc]initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-            cellData.memberName = dic[@"MemberName"];
-            cellData.age = dic[@"Age"];
-            cellData.gender = [dic[@"Gender"] boolValue] ? @"女":@"男";
-            cellData.consultContent = dic[@"ConsultContent"];
-            cellData.userFile = dic[@"UserFiles"];
+            cellData.userInfoDic = dic;
+            cellData.avatarUrl = [NSURL URLWithString:[[TIMFriendshipManager sharedInstance] queryUserProfile:data.sender].faceURL];
             return cellData;
-//            KMURLMessageCellData *cellData = [[KMURLMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-//            cellData.text = @"查看详情>>";
-//            cellData.link = @"https://cloud.tencent.com/product/im";
-//            return cellData;
+
         }
         if ([customElem.ext isEqualToString:@"Room.DurationChanged"]) { //房间持续时间变更
             
@@ -228,7 +219,10 @@
             
         }
         if ([customElem.ext isEqualToString:@"Order.Buy.Recipe"] || [customElem.ext isEqualToString:@"Diagnose.Summary.Submit"]) { //购买处方
-            
+            KMURLMessageCellData *cellData = [[KMURLMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+            cellData.text = @"查看详情>>";
+            cellData.link = @"https://cloud.tencent.com/product/im";
+            return cellData;
         }
         if ([customElem.ext isEqualToString:@"Recipe.Preview"]) { //处方预览
             
@@ -246,41 +240,23 @@
 /// 展示自定义个性化消息
 - (TUIMessageCell *)messageController:(TUIMessageController *)controller onShowMessageData:(TUIMessageCellData *)data
 {
-//    if ([self.delegate respondsToSelector:@selector(chatController:onShowMessageData:)]) {
-//        return [self.delegate chatController:self onShowMessageData:data];
-//    }
-//    return nil;
     if ([data isKindOfClass:[KMPatientInfoMessageCellData class]]) {
         KMPatientInfoMessageCell * cell = [[KMPatientInfoMessageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"KMPatientInfoMessageCell"];
         [cell fillWithData:data];
         return cell;
     }
     
-//    if ([data isKindOfClass:[KMURLMessageCellData class]]) {
-//        KMURLMessageCell *myCell = [[KMURLMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
-//        [myCell fillWithData:(KMURLMessageCellData *)data];
-//        return myCell;
-//    }
+    if ([data isKindOfClass:[KMURLMessageCellData class]]) {
+        KMURLMessageCell *myCell = [[KMURLMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
+        [myCell fillWithData:(KMURLMessageCellData *)data];
+        return myCell;
+    }
     return nil;
-}
-/// 点击消息头像回调
-- (void)messageController:(TUIMessageController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell
-{
-    if (cell.messageData.identifier == nil)
-        return;
-
-//    if ([self.delegate respondsToSelector:@selector(chatController:onSelectMessageAvatar:)]) {
-//        [self.delegate chatController:self onSelectMessageAvatar:cell];
-//        return;
-//    }
 }
 /// 点击消息内容回调
 - (void)messageController:(TUIMessageController *)controller onSelectMessageContent:(TUIMessageCell *)cell
 {
-//    if ([self.delegate respondsToSelector:@selector(chatController:onSelectMessageContent:)]) {
-//        [self.delegate chatController:self onSelectMessageContent:cell];
-//        return;
-//    }
+
     if ([cell isKindOfClass:[KMPatientInfoMessageCell class]]) {
         KMPatientInfoMessageCellData * cellData = (KMPatientInfoMessageCellData *)cell.messageData;
         KMPatientInfoVC * infoVC  = [[KMPatientInfoVC alloc] init];

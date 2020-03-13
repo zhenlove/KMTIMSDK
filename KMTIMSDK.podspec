@@ -28,12 +28,16 @@ TODO: Add long description of the pod here.
   }
   s.requires_arc = true
   s.dependency 'TXIMSDK_TUIKit_iOS'
-  s.dependency 'Masonry'
-  s.dependency 'SDWebImage'
   s.dependency 'ReactiveObjC'
-#  s.dependency 'ReactiveObjC'
-#  s.dependency 'Toast'
-#  s.dependency 'ISVImageScrollView'
-#  s.vendored_libraries = ['**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrnb/libopencore-amrnb.a', '**/KMTIMSDK/Classes/TUIKit/third/voiceConvert/opencore-amrwb/libopencore-amrwb.a']
-#  s.resource = ['**/KMTIMSDK/Resources/TUIKitFace.bundle','**/KMTIMSDK/Resources/TUIKitResource.bundle']
+  s.dependency 'KMAgoraRtc'
+#    pod 'KMAgoraRtc','1.0.1'
+  
+  s.subspec 'KMPatientInfo' do |ss|
+    ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'
+    ss.dependency 'Masonry'
+    ss.dependency 'SDWebImage'
+    end
+  s.subspec 'KMIMCustomCell' do |ss|
+    ss.source_files = 'KMTIMSDK/KMIMCustomCell/**/*.{h,m}'
+    end
 end

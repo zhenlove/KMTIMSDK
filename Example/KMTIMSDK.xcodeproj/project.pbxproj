@@ -182,8 +182,8 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				545953769154DD622F20F3FE /* [CP] Embed Pods Frameworks */,
 				3771B0DDA255D3FB3FEA5A80 /* [CP] Copy Pods Resources */,
+				88F692955F7E5955622A7BF2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,7 +289,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KMTIMSDK_Example/Pods-KMTIMSDK_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		545953769154DD622F20F3FE /* [CP] Embed Pods Frameworks */ = {
+		88F692955F7E5955622A7BF2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

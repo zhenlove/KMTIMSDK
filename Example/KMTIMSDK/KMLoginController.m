@@ -23,6 +23,7 @@
 @interface KMLoginController ()<KMH5JSCallBackDelegate>
 @property (nonatomic,strong) KMH5WebView * h5WebView;
 @property (nonatomic,strong) KMIMConfigModel * imConfigModel;
+@property (nonatomic,strong) KMUserInfoModel * userInfoModel;
 @end
 
 @implementation KMLoginController
@@ -70,8 +71,8 @@
                    parameters:dic
                    isHttpBody:false
                 requestSucess:^(NSHTTPURLResponse * _Nullable response, NSDictionary<NSString *,id> * _Nullable result) {
-        KMUserInfoModel * userInfoModel = [KMUserInfoModel mj_objectWithKeyValues:result[@"Data"]];
-        KMServiceModel.usertoken = userInfoModel.UserToken;
+        self.userInfoModel = [KMUserInfoModel mj_objectWithKeyValues:result[@"Data"]];
+        KMServiceModel.usertoken = self.userInfoModel.UserToken;
 
         self.h5WebView.hidden = false;
         NSDictionary *dic = @{@"AppKey":KMServiceModel.appKey,
@@ -121,6 +122,12 @@
 
     [[KMTIMManager sharedInstance] loginOfSucc:^{
         NSLog(@"IM登录成功");
+        NSDictionary *dic = @{TIMProfileTypeKey_Nick:self.userInfoModel.UserCNName,TIMProfileTypeKey_FaceUrl:self.userInfoModel.PhotoUrl};
+        [[TIMFriendshipManager sharedInstance] modifySelfProfile:dic succ:^{
+            NSLog(@"设置用户资料成功");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"设置用户资料 code:%d msg:%@",code,msg);
+        }];
     } fail:^(int code, NSString * _Nonnull msg) {
         NSLog(@"IM登录失败 code:%d msg:%@",code,msg);
     }];

@@ -60,6 +60,8 @@
 
 
 - (int)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
+    
+    
     [[TIMManager sharedInstance] login:self.loginParam succ:succ fail:fail];
 }
 

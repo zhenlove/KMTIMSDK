@@ -14,7 +14,6 @@
 -(UIImageView *)iconImage {
     if (!_iconImage) {
         _iconImage = [[UIImageView alloc]init];
-//        [_iconImage setImage:[UIImage imageNamed:@"icon_messagePatient"]];
         [_iconImage setImage:[UIImage kmtim_imageNamed:@"icon_messagePatient"]];
     }
     return _iconImage;
@@ -52,16 +51,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        _myTextLabel = [[UILabel alloc] init];
-//        _myTextLabel.numberOfLines = 0;
-//        _myTextLabel.font = [UIFont systemFontOfSize:15];
-//        [self.container addSubview:_myTextLabel];
-//
-//        _myLinkLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        _myLinkLabel.text = @"查看详情>>";
-//        _myLinkLabel.font = [UIFont systemFontOfSize:15];
-//        _myLinkLabel.textColor = [UIColor blueColor];
-//        [self.container addSubview:_myLinkLabel];
         
         [self.container addSubview:self.iconImage];
         [self.container addSubview:self.patientTitle];
@@ -79,8 +68,7 @@
 - (void)fillWithData:(KMPatientInfoMessageCellData *)data;
 {
     [super fillWithData:data];
-//    self.myTextLabel.text = data.text;
-//    self.customData = data;
+
     self.patientInfo.text = [NSString stringWithFormat:@"%@/%@岁/%@",data.memberName,data.age,data.gender];
     
 }
@@ -91,8 +79,7 @@
     self.iconImage.mm_left(10).mm_height(43).mm_width(43).mm_top(10);
     self.patientTitle.mm_sizeToFit().mm_top(self.iconImage.mm_x).mm_left(self.iconImage.mm_w+20);
     self.patientInfo.mm_sizeToFit().mm_bottom(self.iconImage.mm_b).mm_left(self.iconImage.mm_w+20);
-//    self.myTextLabel.mm_top(10).mm_left(10).mm_flexToRight(10).mm_flexToBottom(50);
-//    self.myLinkLabel.mm_sizeToFit().mm_left(10).mm_bottom(10);
+
 }
 
 @end
