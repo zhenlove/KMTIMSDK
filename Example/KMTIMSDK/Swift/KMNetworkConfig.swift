@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 @objc(Environment)
 enum Environment : NSInteger{
     case Testing1 //测试环境
@@ -134,6 +135,25 @@ class DrugstoreBaseUrl:SetupEnvironment {
     }
 }
 
+class RemoteAuditUrl:SetupEnvironment {
+    static func setEnvironment(_ reason: Environment) -> String {
+        switch reason {
+        case .Testing1:
+            return "https://tysapi.kmwlyy.com:8015/"
+        case .Testing2:
+            return "https://tysapi1.kmwlyy.com:8015/"
+        case .Testing3:
+            return "https://tysapi2.kmwlyy.com:8015/"
+        case .Release1:
+            return "https://prysapi.kmwlyy.com/"
+        case .Release2:
+            return "https://prysapi2.kmwlyy.com/"
+        case .Production:
+            return "https://ysapi.kmwlyy.com/"
+        }
+    }
+}
+
 
 
 
@@ -155,6 +175,7 @@ class DrugstoreBaseUrl:SetupEnvironment {
      static var userBaseUrl:String!
      static var fileStoreUrl:String!
      static var drugstoreBaseUrl:String!
+     static var remoteAuditUrl:String!
     
      @discardableResult
      static func setupParameter(appid:String, appsecret:String, appkey:String, orgid:String, environment:Environment)-> Bool {
@@ -170,6 +191,7 @@ class DrugstoreBaseUrl:SetupEnvironment {
         userBaseUrl = UserBaseUrl.setEnvironment(environment)
         fileStoreUrl = FileStoreUrl.setEnvironment(environment)
         drugstoreBaseUrl = DrugstoreBaseUrl.setEnvironment(environment)
+        remoteAuditUrl = RemoteAuditUrl.setEnvironment(environment)
         
         return true
     }

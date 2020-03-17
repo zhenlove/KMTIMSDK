@@ -29,8 +29,6 @@ TODO: Add long description of the pod here.
   s.requires_arc = true
   s.dependency 'TXIMSDK_TUIKit_iOS'
   s.dependency 'ReactiveObjC'
-  s.dependency 'KMAgoraRtc'
-#    pod 'KMAgoraRtc','1.0.1'
   
   s.subspec 'KMPatientInfo' do |ss|
     ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'

@@ -70,7 +70,7 @@ extension KMNetwork {
                         requestFailure failure:@escaping KMURLRquestFailure) -> Void {
         KMNetwork
         .sessionManager
-        .request(url, method: getHTTPMethod(method: method), parameters: parameters, encoding: isHttpBody ? URLEncoding.default :JSONEncoding.default)
+        .request(url, method: getHTTPMethod(method: method), parameters: parameters, encoding: isHttpBody ? JSONEncoding.default : URLEncoding.default)
         .validateDataStatus(statusCode: 5)
         .responseJSON { (dataResponse) in
                 if dataResponse.result.isSuccess{

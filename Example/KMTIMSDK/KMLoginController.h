@@ -45,4 +45,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface KMILiveConfig : NSObject
+
+@property (nonatomic, assign) NSInteger AccountType;
+@property (nonatomic, strong) NSString * ChannelID;
+@property (nonatomic, strong) NSString * Identifier;
+@property (nonatomic, strong) NSString * ManageSessId;
+@property (nonatomic, strong) NSString * PrivMapEncrypt;
+@property (nonatomic, assign) NSInteger SdkAppID;
+@property (nonatomic, strong) NSString * UserSig;
+@end
+
+@interface KMMediaConfigModel : NSObject
+@property (nonatomic, strong) NSString * AppID;
+@property (nonatomic, assign) BOOL Audio;
+@property (nonatomic, assign) BOOL DisableWebSdkInteroperability;
+@property (nonatomic, assign) NSInteger Duration;
+@property (nonatomic, strong) KMILiveConfig * ILiveConfig;
+@property (nonatomic, strong) NSString * MediaChannelKey;
+@property (nonatomic, strong) NSString * RecordingKey;
+@property (nonatomic, assign) BOOL Screen;
+@property (nonatomic, strong) NSString * Secret;
+@property (nonatomic, assign) NSInteger TotalTime;
+@property (nonatomic, assign) BOOL Video;
+@end
+
 NS_ASSUME_NONNULL_END

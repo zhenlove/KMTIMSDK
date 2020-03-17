@@ -6,9 +6,9 @@
 //
 
 #import "KMTIMManager.h"
-#import "KMChatController.h"
+#import "UIImage+KMTIM.h"
 #import <TXIMSDK_TUIKit_iOS/TUIKit.h>
-
+#import "KMRoomStateListener.h"
 @interface KMTIMManager()
 
 @property(nonatomic,strong) TIMLoginParam * loginParam;
@@ -32,6 +32,7 @@
 {
     self = [super init];
     if (self) {
+        [KMRoomStateListener sharedInstance];
     }
     return self;
 }
@@ -41,8 +42,16 @@
     
     TUIKitConfig * config = [TUIKitConfig defaultConfig];
     config.avatarType = TAvatarTypeRadiusCorner;
-    config.avatarCornerRadius = 6.f;
+//    config.avatarCornerRadius = 20.f; // 如果需要设置头像为圆形时，取消注释即可
     config.faceGroups = @[config.faceGroups.firstObject];
+    
+    //患者默认
+//    config.defaultAvatarImage = [UIImage kmtim_imageNamed:@"defualt_head"];
+//    config.defaultGroupAvatarImage = [UIImage kmtim_imageNamed:@"defualt_head"];
+    //医生默认
+    config.defaultAvatarImage = [UIImage kmtim_imageNamed:@"icon_Default_Head"];
+    config.defaultGroupAvatarImage = [UIImage kmtim_imageNamed:@"icon_Default_Head"];
+    
 }
 
 -(TIMLoginParam *)loginParam {

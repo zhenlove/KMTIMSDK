@@ -10,6 +10,7 @@
 #import "KMPatientInfoHeaderView.h"
 #import "KMPatientInfoCollectionViewCell.h"
 #import "KMVerticalFlowLayout.h"
+#import "KMNavigation.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/SDWebImage.h>
 @interface KMPatientInfoVC () <UICollectionViewDelegate,UICollectionViewDataSource,KMVerticalFlowLayoutDelegate>
@@ -78,8 +79,7 @@
     // Do any additional setup after loading the view.
     self.title = @"就诊人信息";
     self.view.backgroundColor = [UIColor whiteColor];
-//    [KMTools creatBackButtonTarget:self WithSelect:@selector(clickeBackBtn)];
-
+    [KMNavigation creatBackButtonTarget:self WithSelect:@selector(clickeBackBtn)];
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.contentView];
     [self.contentView addSubview:self.headerView];

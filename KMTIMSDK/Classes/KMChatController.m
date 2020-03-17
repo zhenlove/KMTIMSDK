@@ -12,6 +12,7 @@
 #import <TXIMSDK_TUIKit_iOS/TUIKit.h>
 #import <TXIMSDK_TUIKit_iOS/THelper.h>
 #import <TXIMSDK_TUIKit_iOS/TUIImageMessageCellData.h>
+#import <TXIMSDK_TUIKit_iOS/TUISystemMessageCellData.h>
 
 #import <ReactiveObjC/ReactiveObjC.h>
 
@@ -19,7 +20,7 @@
 #import "KMURLMessageCell.h"
 #import "KMPatientInfoMessageCell.h"
 #import "KMPatientInfoMessageCellData.h"
-
+#import "KMNavigation.h"
 #import "KMPatientInfoVC.h"
 
 @interface KMChatController ()<TMessageControllerDelegate, TInputControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -51,6 +52,8 @@
 @end
 
 @implementation KMChatController
+
+
 
 -(TIMConversation *)conversation {
     if (!_conversation) {
@@ -95,8 +98,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [KMNavigation creatBackButtonTarget:self WithSelect:@selector(clickeBackBtn)];
     [self setupViews];
+    
+    
     // Do any additional setup after loading the view.
+}
+- (void)clickeBackBtn {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
@@ -216,7 +225,9 @@
 
         }
         if ([customElem.ext isEqualToString:@"Room.DurationChanged"]) { //房间持续时间变更
-            
+            TUISystemMessageCellData * cellData = [[TUISystemMessageCellData alloc]initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+            cellData.content = customElem.desc;
+            return cellData;
         }
         if ([customElem.ext isEqualToString:@"Room.StateChanged"]) { //房间状态
             
@@ -225,7 +236,9 @@
             
         }
         if ([customElem.ext isEqualToString:@"Notice"]) { //通知
-            
+            TUISystemMessageCellData * cellData = [[TUISystemMessageCellData alloc]initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+            cellData.content = customElem.desc;
+            return cellData;
         }
         if ([customElem.ext isEqualToString:@"Order.Buy.Recipe"] || [customElem.ext isEqualToString:@"Diagnose.Summary.Submit"]) { //购买处方
             KMURLMessageCellData *cellData = [[KMURLMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];

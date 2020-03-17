@@ -6,8 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KMChatController.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^KMTIMLoginSucc)(void);

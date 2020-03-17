@@ -5,21 +5,18 @@ PODS:
     - CocoaAsyncSocket
   - CocoaAsyncSocket (7.6.3)
   - ISVImageScrollView (0.1.2)
-  - KMAgoraRtc (1.0.1):
+  - KMAgoraRtc (1.0.2):
     - AgoraRtcEngine_iOS
     - SnapKit
   - KMTIMSDK (0.1.0):
-    - KMAgoraRtc
     - KMTIMSDK/KMIMCustomCell (= 0.1.0)
     - KMTIMSDK/KMPatientInfo (= 0.1.0)
     - ReactiveObjC
     - TXIMSDK_TUIKit_iOS
   - KMTIMSDK/KMIMCustomCell (0.1.0):
-    - KMAgoraRtc
     - ReactiveObjC
     - TXIMSDK_TUIKit_iOS
   - KMTIMSDK/KMPatientInfo (0.1.0):
-    - KMAgoraRtc
     - Masonry
     - ReactiveObjC
     - SDWebImage
@@ -46,6 +43,7 @@ DEPENDENCIES:
   - Alamofire (= 4.9.1)
   - Bagel (= 1.3.2)
   - CocoaAsyncSocket (= 7.6.3)
+  - KMAgoraRtc (= 1.0.2)
   - KMTIMSDK (from `../`)
   - Masonry (= 1.1.0)
   - MJExtension (= 3.2.1)
@@ -78,8 +76,8 @@ SPEC CHECKSUMS:
   Bagel: 199e0105ac694d6eee9db54dd006c940da6ce81b
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ISVImageScrollView: ba511d12a1661b40feb8921309c0854bf93ec749
-  KMAgoraRtc: 1290e6a00c3e53f59abefe9ad82c366d6d314116
-  KMTIMSDK: 8dee8cb765965bb9b1232e8fe22be05c25732caa
+  KMAgoraRtc: 98e7655ec7e2ecf27e092fb2cfd9b059b4c6f9fa
+  KMTIMSDK: b2536457574028ecc8cbbb751f65ab0a2f1ad356
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
@@ -90,6 +88,6 @@ SPEC CHECKSUMS:
   TXIMSDK_iOS: e2f691308b9f27f51ba93d53af71254cfe1bfa5c
   TXIMSDK_TUIKit_iOS: 7c5a6556929b590e3d2cfb85a865a3c5b28f4d87
 
-PODFILE CHECKSUM: d8d152f9a80d011ebd8059d65a935ac75e512eab
+PODFILE CHECKSUM: 7a4130bc2f83e0a1cb915d70f637dda4d7136d2e
 
 COCOAPODS: 1.8.4
