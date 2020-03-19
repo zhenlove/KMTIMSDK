@@ -8,7 +8,6 @@
 #import "KMTIMManager.h"
 #import "UIImage+KMTIM.h"
 #import <TXIMSDK_TUIKit_iOS/TUIKit.h>
-#import "KMRoomStateListener.h"
 @interface KMTIMManager()
 
 @property(nonatomic,strong) TIMLoginParam * loginParam;
@@ -32,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-        [KMRoomStateListener sharedInstance];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNewMessage:) name:TUIKitNotification_TIMMessageListener object:nil];
     }
     return self;
 }
@@ -68,13 +67,31 @@
 }
 
 
-- (int)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
-    
+- (void)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
     
     [[TIMManager sharedInstance] login:self.loginParam succ:succ fail:fail];
 }
 
-- (int)logout:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
+- (void)logout:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
     [[TIMManager sharedInstance] logout:succ fail:fail];
+}
+
+- (void)onNewMessage:(NSNotification *)notification
+{
+    NSArray *msgs = notification.object;
+    for (TIMMessage *msg in msgs) {
+        for (int i = 0; i < msg.elemCount; ++i) {
+            TIMElem *elem = [msg getElem:i];
+            if ([elem isKindOfClass:[TIMCustomElem class]]) {
+                TIMCustomElem * customElem = (TIMCustomElem *)elem;
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:customElem.data  options:NSJSONReadingMutableContainers error:nil];
+                if ([customElem.ext isEqualToString:@"Room.StateChanged"]) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(listenerToChannelID:withCustomElem:)]) {
+                        [self.delegate listenerToChannelID:[dic[@"ChannelID"] stringValue] withCustomElem:dic];
+                    }
+                }
+            }
+        }
+    }
 }
 @end

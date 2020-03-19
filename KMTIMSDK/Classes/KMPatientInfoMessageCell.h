@@ -5,8 +5,7 @@
 //  Created by Ed on 2020/3/13.
 //
 
-#import "TUIMessageCell.h"
-
+#import <TXIMSDK_TUIKit_iOS/TUIMessageCell.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KMPatientInfoMessageCell : TUIMessageCell

@@ -22,20 +22,28 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '9.0'
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
   s.libraries    = 'stdc++'
-  s.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
   s.resource_bundles = {
     'KMTIMImage' => ['KMTIMSDK/Assets/*']
   }
   s.requires_arc = true
-  s.dependency 'TXIMSDK_TUIKit_iOS'
-  s.dependency 'ReactiveObjC'
+  
+  s.subspec 'KMTools' do |ss|
+    ss.source_files = 'KMTIMSDK/KMTools/**/*.{h,m}'
+    end
   
   s.subspec 'KMPatientInfo' do |ss|
     ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'
     ss.dependency 'Masonry'
     ss.dependency 'SDWebImage'
+    ss.dependency 'KMTIMSDK/KMTools'
     end
-  s.subspec 'KMIMCustomCell' do |ss|
-    ss.source_files = 'KMTIMSDK/KMIMCustomCell/**/*.{h,m}'
+  
+  s.subspec 'KMIMBase' do |ss|
+    ss.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
+    ss.public_header_files = 'KMTIMSDK/Classes/**/*.h'
+    ss.dependency 'TXIMSDK_TUIKit_iOS'
+    ss.dependency 'ReactiveObjC'
+    ss.dependency 'KMTIMSDK/KMTools'
+    ss.dependency 'KMTIMSDK/KMPatientInfo'
     end
 end

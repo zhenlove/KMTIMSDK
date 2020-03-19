@@ -16,13 +16,9 @@
 		6003F59E195388D20070C39A /* KMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* KMAppDelegate.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6444738C240D0136007984EF /* KMH5WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6444738A240D0135007984EF /* KMH5WebView.m */; };
-		6444738E240D0498007984EF /* KMNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6444738D240D0498007984EF /* KMNetwork.swift */; };
-		64447392240E32D4007984EF /* KMNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64447391240E32D4007984EF /* KMNetworkConfig.swift */; };
-		64447394240E33A7007984EF /* KMBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64447393240E33A7007984EF /* KMBaseModel.swift */; };
-		64447396240E340C007984EF /* CustomExtensioon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64447395240E340C007984EF /* CustomExtensioon.swift */; };
-		6444739A240E3539007984EF /* KMAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64447399240E3539007984EF /* KMAdapter.swift */; };
-		6444739C240E3571007984EF /* KMRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6444739B240E3571007984EF /* KMRetrier.swift */; };
 		646D0322235DB3D20095A862 /* KMTestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D0321235DB3D20095A862 /* KMTestSwift.swift */; };
+		6470E88C2420B95D00AFC968 /* KMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6470E88B2420B95D00AFC968 /* KMWebViewController.m */; };
+		6470E88F2420BDCB00AFC968 /* KMModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 6470E88E2420BDCB00AFC968 /* KMModels.m */; };
 		64B8779B235D4DC200825BFE /* KMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B87799235D4DC200825BFE /* KMLoginController.m */; };
 		64B8779C235D4DC200825BFE /* KMLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B8779A235D4DC200825BFE /* KMLoginController.xib */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
@@ -47,14 +43,12 @@
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6444738A240D0135007984EF /* KMH5WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMH5WebView.m; sourceTree = "<group>"; };
 		6444738B240D0136007984EF /* KMH5WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMH5WebView.h; sourceTree = "<group>"; };
-		6444738D240D0498007984EF /* KMNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMNetwork.swift; sourceTree = "<group>"; };
-		64447391240E32D4007984EF /* KMNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMNetworkConfig.swift; sourceTree = "<group>"; };
-		64447393240E33A7007984EF /* KMBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMBaseModel.swift; sourceTree = "<group>"; };
-		64447395240E340C007984EF /* CustomExtensioon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensioon.swift; sourceTree = "<group>"; };
-		64447399240E3539007984EF /* KMAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAdapter.swift; sourceTree = "<group>"; };
-		6444739B240E3571007984EF /* KMRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMRetrier.swift; sourceTree = "<group>"; };
 		646D0320235DB3D10095A862 /* KMTIMSDK_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KMTIMSDK_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		646D0321235DB3D20095A862 /* KMTestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMTestSwift.swift; sourceTree = "<group>"; };
+		6470E88A2420B95D00AFC968 /* KMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMWebViewController.h; sourceTree = "<group>"; };
+		6470E88B2420B95D00AFC968 /* KMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMWebViewController.m; sourceTree = "<group>"; };
+		6470E88D2420BDCB00AFC968 /* KMModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMModels.h; sourceTree = "<group>"; };
+		6470E88E2420BDCB00AFC968 /* KMModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMModels.m; sourceTree = "<group>"; };
 		64B87798235D4DC200825BFE /* KMLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMLoginController.h; sourceTree = "<group>"; };
 		64B87799235D4DC200825BFE /* KMLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMLoginController.m; sourceTree = "<group>"; };
 		64B8779A235D4DC200825BFE /* KMLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMLoginController.xib; sourceTree = "<group>"; };
@@ -110,7 +104,6 @@
 		6003F593195388D20070C39A /* Example for KMTIMSDK */ = {
 			isa = PBXGroup;
 			children = (
-				64447398240E349C007984EF /* Swift */,
 				6003F59C195388D20070C39A /* KMAppDelegate.h */,
 				6003F59D195388D20070C39A /* KMAppDelegate.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -123,6 +116,10 @@
 				6444738A240D0135007984EF /* KMH5WebView.m */,
 				646D0321235DB3D20095A862 /* KMTestSwift.swift */,
 				646D0320235DB3D10095A862 /* KMTIMSDK_Example-Bridging-Header.h */,
+				6470E88A2420B95D00AFC968 /* KMWebViewController.h */,
+				6470E88B2420B95D00AFC968 /* KMWebViewController.m */,
+				6470E88D2420BDCB00AFC968 /* KMModels.h */,
+				6470E88E2420BDCB00AFC968 /* KMModels.m */,
 			);
 			name = "Example for KMTIMSDK";
 			path = KMTIMSDK;
@@ -147,19 +144,6 @@
 				39727FA18CEDFFA4AE1ACC50 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		64447398240E349C007984EF /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				6444738D240D0498007984EF /* KMNetwork.swift */,
-				64447391240E32D4007984EF /* KMNetworkConfig.swift */,
-				64447393240E33A7007984EF /* KMBaseModel.swift */,
-				64447395240E340C007984EF /* CustomExtensioon.swift */,
-				64447399240E3539007984EF /* KMAdapter.swift */,
-				6444739B240E3571007984EF /* KMRetrier.swift */,
-			);
-			path = Swift;
 			sourceTree = "<group>";
 		};
 		B63AE9B723C044289A633F9B /* Pods */ = {
@@ -314,16 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64447394240E33A7007984EF /* KMBaseModel.swift in Sources */,
+				6470E88C2420B95D00AFC968 /* KMWebViewController.m in Sources */,
 				6003F59E195388D20070C39A /* KMAppDelegate.m in Sources */,
-				64447396240E340C007984EF /* CustomExtensioon.swift in Sources */,
+				6470E88F2420BDCB00AFC968 /* KMModels.m in Sources */,
 				646D0322235DB3D20095A862 /* KMTestSwift.swift in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				6444739C240E3571007984EF /* KMRetrier.swift in Sources */,
-				6444739A240E3539007984EF /* KMAdapter.swift in Sources */,
 				64B8779B235D4DC200825BFE /* KMLoginController.m in Sources */,
-				64447392240E32D4007984EF /* KMNetworkConfig.swift in Sources */,
-				6444738E240D0498007984EF /* KMNetwork.swift in Sources */,
 				6444738C240D0136007984EF /* KMH5WebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

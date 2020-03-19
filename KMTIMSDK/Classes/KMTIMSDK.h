@@ -13,6 +13,4 @@
 #import "KMPatientInfoMessageCell.h"
 #import "KMPatientInfoMessageCellData.h"
 #import "KMTIMManager.h"
-#import "KMRoomStateListener.h"
-#import "KMNavigation.h"
 #endif /* KMTIMSDK_h */
