@@ -26,12 +26,26 @@ typedef NS_ENUM(NSInteger, KMConsultationState) {
     KMConsultationState_Finished = 5,//
 };
 
+@protocol KMChatControllerDelegate<NSObject>
+@optional
+
+/// 点击患者咨询
+-(void)clickePatientInfo:(NSDictionary *)patientInfoDic;
+
+/// 点击处方
+-(void)clickePrescribe:(NSString *)prescribeUrl oPDRegisterID:(NSString *)OPDRegisterID;
+
+/// 点击返回
+- (BOOL)clickeBackBtnController;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 @interface KMChatController : UIViewController
 /** 咨询状态 */
 @property (nonatomic, assign) KMConsultationState consulationState;
 @property (nonatomic, copy) NSString *convId;
-
+@property (nonatomic, weak) id<KMChatControllerDelegate>delegate;
 
 @end
 

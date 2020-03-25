@@ -8,9 +8,7 @@
 #ifndef KMTIMSDK_h
 #define KMTIMSDK_h
 #import "KMChatController.h"
-#import "KMURLMessageCell.h"
-#import "KMURLMessageCellData.h"
-#import "KMPatientInfoMessageCell.h"
-#import "KMPatientInfoMessageCellData.h"
+#import "KMIMWebViewController.h"
+#import "KMPatientInfoVC.h"
 #import "KMTIMManager.h"
 #endif /* KMTIMSDK_h */

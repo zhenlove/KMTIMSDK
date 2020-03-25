@@ -10,7 +10,6 @@
 #import "KMPatientInfoHeaderView.h"
 #import "KMPatientInfoCollectionViewCell.h"
 #import "KMVerticalFlowLayout.h"
-#import "KMNavigation.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/SDWebImage.h>
 @interface KMPatientInfoVC () <UICollectionViewDelegate,UICollectionViewDataSource,KMVerticalFlowLayoutDelegate>
@@ -72,6 +71,8 @@
     self.sex = genderArr[[userInfoDic[@"Gender"] integerValue]];
     self.desc = userInfoDic[@"ConsultContent"];
     self.pictureArray = userInfoDic[@"UserFiles"];
+//    headerPic
+    [self.headerView.headerPic sd_setImageWithURL:[NSURL URLWithString:userInfoDic[@"UserImage"]]];
 }
 
 - (void)viewDidLoad {
@@ -79,7 +80,6 @@
     // Do any additional setup after loading the view.
     self.title = @"就诊人信息";
     self.view.backgroundColor = [UIColor whiteColor];
-    [KMNavigation creatBackButtonTarget:self WithSelect:@selector(clickeBackBtn)];
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.contentView];
     [self.contentView addSubview:self.headerView];
@@ -142,13 +142,6 @@
     [super updateViewConstraints];
 }
 
-
-#pragma mark -Action
-
-- (void)clickeBackBtn
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 #pragma mark -UICollectionViewDelegate, UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

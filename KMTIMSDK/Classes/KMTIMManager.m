@@ -61,19 +61,25 @@
 }
 
 - (void)setupWithAppId:(NSInteger)sdkAppId UserSig:(NSString *)userSig andIdentifier:(NSString *)identifier {
-    [self setupWithAppId:sdkAppId];
+    if ([[TIMManager sharedInstance] getLoginStatus] != TIM_STATUS_LOGINED) {
+         [self setupWithAppId:sdkAppId];
+    }
+    
     self.loginParam.userSig = userSig;
     self.loginParam.identifier = identifier;
 }
 
 
 - (void)loginOfSucc:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
-    
-    [[TIMManager sharedInstance] login:self.loginParam succ:succ fail:fail];
+    if ([[TIMManager sharedInstance] getLoginStatus] == TIM_STATUS_LOGOUT) {
+        [[TIMManager sharedInstance] login:self.loginParam succ:succ fail:fail];
+    }
 }
 
 - (void)logout:(KMTIMLoginSucc)succ fail:(KMTIMFail)fail {
-    [[TIMManager sharedInstance] logout:succ fail:fail];
+    if ([[TIMManager sharedInstance] getLoginStatus] == TIM_STATUS_LOGINED) {
+         [[TIMManager sharedInstance] logout:succ fail:fail];
+    }
 }
 
 - (void)onNewMessage:(NSNotification *)notification

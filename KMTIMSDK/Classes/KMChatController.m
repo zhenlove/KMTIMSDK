@@ -14,45 +14,32 @@
 #import <TXIMSDK_TUIKit_iOS/TUIImageMessageCellData.h>
 #import <TXIMSDK_TUIKit_iOS/TUISystemMessageCellData.h>
 
-#import <ReactiveObjC/ReactiveObjC.h>
+#import "KMPrescribeMessageCellData.h"
+#import "KMPrescribeMessageCell.h"
 
-#import "KMURLMessageCellData.h"
-#import "KMURLMessageCell.h"
-#import "KMPatientInfoMessageCell.h"
 #import "KMPatientInfoMessageCellData.h"
-#import "KMNavigation.h"
-#import "KMPatientInfoVC.h"
+#import "KMPatientInfoMessageCell.h"
 
-@interface KMChatController ()<TMessageControllerDelegate, TInputControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import "KMHeader.h"
+#import "UIViewController+BackHandler.h"
+
+@interface KMChatController ()<TMessageControllerDelegate, TInputControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UINavigationBarDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) TIMConversation *conversation;
-/**
- *  TUIKit 聊天消息控制器
- *  负责消息气泡的展示，同时负责响应用户对于消息气泡的交互，比如：点击消息发送者头像、轻点消息、长按消息等操作。
- *  聊天消息控制器的详细信息请参考 Section\Chat\TUIMessageController.h
- */
-@property TUIMessageController *messageController;
-
-/**
- *  TUIKit 信息输入控制器。
- *  负责接收用户输入，同时显示“+”按钮与语音输入按钮、表情按钮等。
- *  同时 TUIInputController 整合了消息的发送功能，您可以直接使用 TUIInputController 进行消息的输入采集与发送。
- *  信息输入控制器的详细信息请参考 Section\Chat\Input\TUIInputController.h
- */
-@property TUIInputController *inputController;
-
-
-
-
-/**
- *  更多菜单视图数据的数据组
- *  更多菜单视图包括：拍摄、图片、视频、文件。详细信息请参考 Section\Chat\TUIMoreView.h
- */
-@property NSArray<TUIInputMoreCellData *> *moreMenus;
+@property (nonatomic, strong) TUIMessageController *messageController;
+@property (nonatomic, strong) TUIInputController *inputController;
+@property (nonatomic, strong) NSArray<TUIInputMoreCellData *> *moreMenus;
 @end
 
 @implementation KMChatController
 
+
+-(NSArray<TUIInputMoreCellData *> *)moreMenus {
+    if (!_moreMenus) {
+        _moreMenus = @[[TUIInputMoreCellData photoData],[TUIInputMoreCellData pictureData]];
+    }
+    return _moreMenus;
+}
 
 
 -(TIMConversation *)conversation {
@@ -77,35 +64,42 @@
         _inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height + Bottom_SafeHeight);
         _inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         _inputController.delegate = self;
-        [_inputController.moreView setData:_moreMenus];
+        [_inputController.moreView setData:self.moreMenus];
         [self addChildViewController:_inputController];
-        
     }
     return _inputController;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        NSMutableArray *moreMenus = [NSMutableArray array];
-        [moreMenus addObject:[TUIInputMoreCellData photoData]];
-        [moreMenus addObject:[TUIInputMoreCellData pictureData]];
-        _moreMenus = moreMenus;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [KMNavigation creatBackButtonTarget:self WithSelect:@selector(clickeBackBtn)];
     [self setupViews];
-    
-    
-    // Do any additional setup after loading the view.
 }
-- (void)clickeBackBtn {
-    [self.navigationController popViewControllerAnimated:YES];
+-(BOOL)navigationShouldPopOnBackButton {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickeBackBtnController)]) {
+        return [self.delegate clickeBackBtnController];
+    }
+    return YES;
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = [self.navigationController topViewController];
+    }
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer == self.navigationController.interactivePopGestureRecognizer) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(clickeBackBtnController)]) {
+            return [self.delegate clickeBackBtnController];
+        }
+        return YES;
+    }
+    return YES;
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
@@ -156,9 +150,6 @@
 - (void)inputController:(TUIInputController *)inputController didSendMessage:(TUIMessageCellData *)msg
 {
     [_messageController sendMessage:msg];
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
-//        [self.delegate chatController:self didSendMessage:msg];
-//    }
 }
 
 - (void)sendMessage:(TUIMessageCellData *)message
@@ -190,9 +181,6 @@
     if (cell.data == [TUIInputMoreCellData pictureData]) {
         [self takePictureForSend];
     }
-//    if(_delegate && [_delegate respondsToSelector:@selector(chatController:onSelectMoreCell:)]){
-//        [_delegate chatController:self onSelectMoreCell:cell];
-//    }
 }
 
 - (void)didTapInMessageController:(TUIMessageController *)controller
@@ -219,7 +207,9 @@
         NSLog(@"自定义消息类型：%@",customElem.ext);
         if ([customElem.ext isEqualToString:@"User.DiseaseDesc"]) { //病情描述
             KMPatientInfoMessageCellData * cellData = [[KMPatientInfoMessageCellData alloc]initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-            cellData.userInfoDic = dic;
+            NSMutableDictionary *muDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+            [muDic setValue:[[TIMFriendshipManager sharedInstance] queryUserProfile:data.sender].faceURL forKey:@"UserImage"];
+            cellData.userInfoDic = muDic;
             cellData.avatarUrl = [NSURL URLWithString:[[TIMFriendshipManager sharedInstance] queryUserProfile:data.sender].faceURL];
             return cellData;
 
@@ -240,11 +230,13 @@
             cellData.content = customElem.desc;
             return cellData;
         }
-        if ([customElem.ext isEqualToString:@"Order.Buy.Recipe"] || [customElem.ext isEqualToString:@"Diagnose.Summary.Submit"]) { //购买处方
-            KMURLMessageCellData *cellData = [[KMURLMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-            cellData.text = @"查看详情>>";
-            cellData.link = @"https://cloud.tencent.com/product/im";
+        if ([customElem.ext isEqualToString:@"Diagnose.Summary.Submit"] || [customElem.ext isEqualToString:@"Order.Buy.Recipe"]) { //购买处方
+            NSArray * customArr = (NSArray *)dic;
+            KMPrescribeMessageCellData *cellData = [[KMPrescribeMessageCellData alloc] initWithDirection:data.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+            cellData.recipeImgUrl = customArr[0][@"RecipeImgUrl"];
+            cellData.OPDRegisterID = customArr[0][@"OPDRegisterID"];
             return cellData;
+            
         }
         if ([customElem.ext isEqualToString:@"Recipe.Preview"]) { //处方预览
             
@@ -268,10 +260,10 @@
         return cell;
     }
     
-    if ([data isKindOfClass:[KMURLMessageCellData class]]) {
-        KMURLMessageCell *myCell = [[KMURLMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
-        [myCell fillWithData:(KMURLMessageCellData *)data];
-        return myCell;
+    if ([data isKindOfClass:[KMPrescribeMessageCellData class]]) {
+        KMPrescribeMessageCell * cell = [[KMPrescribeMessageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"KMPrescribeMessageCell"];
+        [cell fillWithData:(KMPrescribeMessageCellData *)data];
+        return cell;
     }
     return nil;
 }
@@ -281,10 +273,16 @@
 
     if ([cell isKindOfClass:[KMPatientInfoMessageCell class]]) {
         KMPatientInfoMessageCellData * cellData = (KMPatientInfoMessageCellData *)cell.messageData;
-        KMPatientInfoVC * infoVC  = [[KMPatientInfoVC alloc] init];
-        infoVC.userInfoDic = cellData.userInfoDic;
-        infoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:infoVC animated:YES];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(clickePatientInfo:)]) {
+            [self.delegate clickePatientInfo:cellData.userInfoDic];
+        }
+
+    }
+    if ([cell isKindOfClass:[KMPrescribeMessageCell class]]) {
+        KMPrescribeMessageCellData * cellData = (KMPrescribeMessageCellData *)cell.messageData;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(clickePrescribe:oPDRegisterID:)]) {
+            [self.delegate clickePrescribe:cellData.recipeImgUrl oPDRegisterID:cellData.OPDRegisterID];
+        }
     }
 }
 
@@ -317,10 +315,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     // 快速点的时候会回调多次
-    @weakify(self)
+//    @weakify(self)
+    __weak typeof(self)weakSelf = self;
     picker.delegate = nil;
     [picker dismissViewControllerAnimated:YES completion:^{
-        @strongify(self)
+//        @strongify(self)
+        __strong typeof(weakSelf)strongSelf = weakSelf;
         NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
         if([mediaType isEqualToString:(NSString *)kUTTypeImage]){
             UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -344,7 +344,7 @@
             TUIImageMessageCellData *uiImage = [[TUIImageMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
             uiImage.path = path;
             uiImage.length = data.length;
-            [self sendMessage:uiImage];
+            [strongSelf sendMessage:uiImage];
             }
         }];
 }
