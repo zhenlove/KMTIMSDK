@@ -5,7 +5,7 @@
 //  Created by Ed on 2020/3/20.
 //
 
-#import "TUIMessageCell.h"
+#import <TXIMSDK_TUIKit_iOS/TUIMessageCell.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -30,9 +30,6 @@ TODO: Add long description of the pod here.
   s.subspec 'KMTools' do |ss|
     ss.source_files = 'KMTIMSDK/KMTools/**/*.{h,m}'
     end
-  s.subspec 'KMCustomCell' do |ss|
-    ss.source_files = 'KMTIMSDK/KMCustomCell/**/*.{h,m}'
-    end
   
   s.subspec 'KMPatientInfo' do |ss|
     ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'
@@ -50,7 +47,7 @@ TODO: Add long description of the pod here.
   s.subspec 'KMIMBase' do |ss|
     ss.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
     ss.dependency 'TXIMSDK_TUIKit_iOS'
-    ss.dependency 'KMTIMSDK/KMCustomCell'
+    ss.dependency 'SDWebImage'
     ss.dependency 'KMTIMSDK/KMTools'
     end
 end

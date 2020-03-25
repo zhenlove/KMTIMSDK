@@ -17,15 +17,13 @@ PODS:
     - KMNetwork
     - KMTIMSDK
   - KMTIMSDK (0.1.0):
-    - KMTIMSDK/KMCustomCell (= 0.1.0)
     - KMTIMSDK/KMIMBase (= 0.1.0)
     - KMTIMSDK/KMPatientInfo (= 0.1.0)
     - KMTIMSDK/KMSeePrescribe (= 0.1.0)
     - KMTIMSDK/KMTools (= 0.1.0)
-  - KMTIMSDK/KMCustomCell (0.1.0)
   - KMTIMSDK/KMIMBase (0.1.0):
-    - KMTIMSDK/KMCustomCell
     - KMTIMSDK/KMTools
+    - SDWebImage
     - TXIMSDK_TUIKit_iOS
   - KMTIMSDK/KMPatientInfo (0.1.0):
     - KMTIMSDK/KMTools
@@ -44,7 +42,7 @@ PODS:
   - SDWebImage/Core (5.5.2)
   - SnapKit (4.2.0)
   - Toast (4.0.0)
-  - TXIMSDK_iOS (4.6.102)
+  - TXIMSDK_iOS (4.7.1)
   - TXIMSDK_TUIKit_iOS (4.6.100):
     - ISVImageScrollView (= 0.1.2)
     - MMLayout (= 0.2.0)
@@ -93,14 +91,14 @@ SPEC CHECKSUMS:
   KMAgoraRtc: 00f1b3d7a45cf8f60a2cdf7797d205e0d95c85c3
   KMNetwork: 8d619cba15eb2863972f7cd6d2a073d91d582f17
   KMOnlineWeb: 813ad31d250b1ffa45ebf5f3b62fa7ce277e644a
-  KMTIMSDK: fe5892782c13675ff2bbde66a8f4855a90e12e86
+  KMTIMSDK: 3256634748f9180e24ed12aaa160cab0d6b195e6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TXIMSDK_iOS: e2f691308b9f27f51ba93d53af71254cfe1bfa5c
+  TXIMSDK_iOS: 2506b27cfdf2aea3e4433b67870755d3a14b358c
   TXIMSDK_TUIKit_iOS: 7c5a6556929b590e3d2cfb85a865a3c5b28f4d87
 
 PODFILE CHECKSUM: ad69a41f88d6e54b63962b92167e639da9fd04d4
