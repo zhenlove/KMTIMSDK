@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KMTIMSDK'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'A short description of KMTIMSDK.'
   
   s.description      = <<-DESC
@@ -20,9 +20,9 @@ TODO: Add long description of the pod here.
   s.author           = { 'zhenlove' => '121910347@qq.com' }
   s.source           = { :git => 'https://github.com/zhenlove/KMTIMSDK.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
-  s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
+  s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64'}
   s.pod_target_xcconfig = {'DEFINES_MODULE' => 'YES'}
-  s.libraries    = 'stdc++'
+  s.static_framework = true
   s.resource_bundles = {
     'KMTIMImage' => ['KMTIMSDK/Assets/*']
   }
@@ -47,6 +47,7 @@ TODO: Add long description of the pod here.
   
   s.subspec 'KMIMBase' do |ss|
     ss.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
+    ss.libraries    = 'stdc++'
     ss.dependency 'TXIMSDK_TUIKit_iOS'
     ss.dependency 'SDWebImage'
     ss.dependency 'KMTIMSDK/KMTools'

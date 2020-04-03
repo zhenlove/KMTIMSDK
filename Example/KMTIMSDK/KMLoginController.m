@@ -7,9 +7,8 @@
 //
 
 #import "KMLoginController.h"
-#import <KMOnlineWeb/KMOnlineManager.h>
 @import KMNetwork;
-
+@import KMOnlineWeb;
 @interface KMLoginController ()
 @end
 
