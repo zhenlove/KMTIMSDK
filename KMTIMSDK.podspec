@@ -21,6 +21,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/zhenlove/KMTIMSDK.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
+  s.pod_target_xcconfig = {'DEFINES_MODULE' => 'YES'}
   s.libraries    = 'stdc++'
   s.resource_bundles = {
     'KMTIMImage' => ['KMTIMSDK/Assets/*']

@@ -6,34 +6,34 @@ PODS:
   - CocoaAsyncSocket (7.6.3)
   - ISVImageScrollView (0.1.2)
   - Kingfisher (4.10.1)
-  - KMAgoraRtc (1.0.5):
+  - KMAgoraRtc (1.0.6):
     - AgoraRtcEngine_iOS
     - Kingfisher
     - SnapKit
-  - KMNetwork (0.1.2):
+  - KMNetwork (0.1.3):
     - Alamofire
-  - KMOnlineWeb (0.1.1):
+  - KMOnlineWeb (0.1.3):
     - KMAgoraRtc
     - KMNetwork
     - KMTIMSDK
-  - KMTIMSDK (0.1.0):
-    - KMTIMSDK/KMIMBase (= 0.1.0)
-    - KMTIMSDK/KMPatientInfo (= 0.1.0)
-    - KMTIMSDK/KMSeePrescribe (= 0.1.0)
-    - KMTIMSDK/KMTools (= 0.1.0)
-  - KMTIMSDK/KMIMBase (0.1.0):
+  - KMTIMSDK (0.1.1):
+    - KMTIMSDK/KMIMBase (= 0.1.1)
+    - KMTIMSDK/KMPatientInfo (= 0.1.1)
+    - KMTIMSDK/KMSeePrescribe (= 0.1.1)
+    - KMTIMSDK/KMTools (= 0.1.1)
+  - KMTIMSDK/KMIMBase (0.1.1):
     - KMTIMSDK/KMTools
     - SDWebImage
     - TXIMSDK_TUIKit_iOS
-  - KMTIMSDK/KMPatientInfo (0.1.0):
+  - KMTIMSDK/KMPatientInfo (0.1.1):
     - KMTIMSDK/KMTools
     - Masonry
     - SDWebImage
-  - KMTIMSDK/KMSeePrescribe (0.1.0):
+  - KMTIMSDK/KMSeePrescribe (0.1.1):
     - KMNetwork
     - KMTIMSDK/KMTools
     - Masonry
-  - KMTIMSDK/KMTools (0.1.0)
+  - KMTIMSDK/KMTools (0.1.1)
   - Masonry (1.1.0)
   - MMLayout (0.2.0)
   - ReactiveObjC (3.1.1)
@@ -54,7 +54,7 @@ PODS:
 DEPENDENCIES:
   - Bagel (= 1.3.2)
   - CocoaAsyncSocket (= 7.6.3)
-  - KMOnlineWeb (= 0.1.1)
+  - KMOnlineWeb (= 0.1.3)
   - KMTIMSDK (from `../`)
 
 SPEC REPOS:
@@ -88,10 +88,10 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ISVImageScrollView: ba511d12a1661b40feb8921309c0854bf93ec749
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  KMAgoraRtc: 00f1b3d7a45cf8f60a2cdf7797d205e0d95c85c3
-  KMNetwork: 8d619cba15eb2863972f7cd6d2a073d91d582f17
-  KMOnlineWeb: 813ad31d250b1ffa45ebf5f3b62fa7ce277e644a
-  KMTIMSDK: 3256634748f9180e24ed12aaa160cab0d6b195e6
+  KMAgoraRtc: 46077d55e9d1d5ac6d748a142310a1b640c05ea4
+  KMNetwork: 2983b3c0deaad382f1dfddf682bc48d6c5403c9a
+  KMOnlineWeb: a156b1c028578ea803fcfaac5abb71533d3d495a
+  KMTIMSDK: a08bc8cc70068a2b672e46c4816a6a6a2811cfad
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
@@ -101,6 +101,6 @@ SPEC CHECKSUMS:
   TXIMSDK_iOS: 2506b27cfdf2aea3e4433b67870755d3a14b358c
   TXIMSDK_TUIKit_iOS: 7c5a6556929b590e3d2cfb85a865a3c5b28f4d87
 
-PODFILE CHECKSUM: ad69a41f88d6e54b63962b92167e639da9fd04d4
+PODFILE CHECKSUM: f1c1558d93722ff880b0e12bdd77bb28b60e1470
 
 COCOAPODS: 1.8.4
