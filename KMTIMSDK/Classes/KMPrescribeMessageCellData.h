@@ -5,8 +5,8 @@
 //  Created by Ed on 2020/3/20.
 //
 
-#import <TXIMSDK_TUIKit_iOS/TUIMessageCellData.h>
-
+#import <UIKit/UIKit.h>
+#import "TUIMessageCellData.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KMPrescribeMessageCellData : TUIMessageCellData

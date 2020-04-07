@@ -41,9 +41,12 @@
                            @"HeadUrl":@"",
                            @"OrgID":@"B1F0AF7AB9624847A3DDAFD573E2ECF0"};
 
-    [[KMOnlineManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
-                                                   withDic:dic
-                                        showViewController:self];
+//    [[KMOnlineManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
+//                                                   withDic:dic
+//                                        showViewController:self];
+    [[OnlineWebManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
+                                                userInfoDic:dic
+                                         showViewController:self];
 }
 
 

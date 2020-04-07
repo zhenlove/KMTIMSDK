@@ -10,51 +10,52 @@ PODS:
     - AgoraRtcEngine_iOS
     - Kingfisher
     - SnapKit
-  - KMNetwork (0.1.3):
+  - KMNetwork (0.1.4):
     - Alamofire
-  - KMOnlineWeb (0.1.3):
+  - KMOnlineWeb (0.1.4):
+    - Kingfisher
     - KMAgoraRtc
     - KMNetwork
     - KMTIMSDK
-  - KMTIMSDK (0.1.2):
-    - KMTIMSDK/KMIMBase (= 0.1.2)
-    - KMTIMSDK/KMPatientInfo (= 0.1.2)
-    - KMTIMSDK/KMSeePrescribe (= 0.1.2)
-    - KMTIMSDK/KMTools (= 0.1.2)
-  - KMTIMSDK/KMIMBase (0.1.2):
-    - KMTIMSDK/KMTools
-    - SDWebImage
-    - TXIMSDK_TUIKit_iOS
-  - KMTIMSDK/KMPatientInfo (0.1.2):
-    - KMTIMSDK/KMTools
-    - Masonry
-    - SDWebImage
-  - KMTIMSDK/KMSeePrescribe (0.1.2):
-    - KMNetwork
-    - KMTIMSDK/KMTools
-    - Masonry
-  - KMTIMSDK/KMTools (0.1.2)
-  - Masonry (1.1.0)
-  - MMLayout (0.2.0)
-  - ReactiveObjC (3.1.1)
-  - SDWebImage (5.5.2):
-    - SDWebImage/Core (= 5.5.2)
-  - SDWebImage/Core (5.5.2)
-  - SnapKit (4.2.0)
-  - Toast (4.0.0)
-  - TXIMSDK_iOS (4.7.2)
-  - TXIMSDK_TUIKit_iOS (4.6.100):
+  - KMTIM (0.1.0):
     - ISVImageScrollView (= 0.1.2)
     - MMLayout (= 0.2.0)
     - ReactiveObjC (= 3.1.1)
-    - SDWebImage (= 5.5.2)
+    - SDWebImage
     - Toast (= 4.0.0)
     - TXIMSDK_iOS
+  - KMTIMSDK (0.1.3):
+    - KMTIMSDK/KMIMBase (= 0.1.3)
+    - KMTIMSDK/KMPatientInfo (= 0.1.3)
+    - KMTIMSDK/KMSeePrescribe (= 0.1.3)
+    - KMTIMSDK/KMTools (= 0.1.3)
+  - KMTIMSDK/KMIMBase (0.1.3):
+    - KMTIM
+    - KMTIMSDK/KMTools
+    - SDWebImage
+  - KMTIMSDK/KMPatientInfo (0.1.3):
+    - KMTIMSDK/KMTools
+    - Masonry
+    - SDWebImage
+  - KMTIMSDK/KMSeePrescribe (0.1.3):
+    - KMNetwork
+    - KMTIMSDK/KMTools
+    - Masonry
+  - KMTIMSDK/KMTools (0.1.3)
+  - Masonry (1.1.0)
+  - MMLayout (0.2.0)
+  - ReactiveObjC (3.1.1)
+  - SDWebImage (5.7.0):
+    - SDWebImage/Core (= 5.7.0)
+  - SDWebImage/Core (5.7.0)
+  - SnapKit (4.2.0)
+  - Toast (4.0.0)
+  - TXIMSDK_iOS (4.7.2)
 
 DEPENDENCIES:
   - Bagel (= 1.3.2)
   - CocoaAsyncSocket (= 7.6.3)
-  - KMOnlineWeb (= 0.1.3)
+  - KMOnlineWeb (from `/Users/ed/github/KMOnlineWeb/`)
   - KMTIMSDK (from `../`)
 
 SPEC REPOS:
@@ -67,7 +68,7 @@ SPEC REPOS:
     - Kingfisher
     - KMAgoraRtc
     - KMNetwork
-    - KMOnlineWeb
+    - KMTIM
     - Masonry
     - MMLayout
     - ReactiveObjC
@@ -75,9 +76,10 @@ SPEC REPOS:
     - SnapKit
     - Toast
     - TXIMSDK_iOS
-    - TXIMSDK_TUIKit_iOS
 
 EXTERNAL SOURCES:
+  KMOnlineWeb:
+    :path: "/Users/ed/github/KMOnlineWeb/"
   KMTIMSDK:
     :path: "../"
 
@@ -89,18 +91,18 @@ SPEC CHECKSUMS:
   ISVImageScrollView: ba511d12a1661b40feb8921309c0854bf93ec749
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   KMAgoraRtc: 444b5fb1014319cf78bfcbb1e10e71cc852c67ec
-  KMNetwork: 2983b3c0deaad382f1dfddf682bc48d6c5403c9a
-  KMOnlineWeb: a156b1c028578ea803fcfaac5abb71533d3d495a
-  KMTIMSDK: 748798bef96b4a73589623a36dda611f15630121
+  KMNetwork: b1f45ec78c5509b70638a08b2d8ba3dd85966dda
+  KMOnlineWeb: 53490143e64dcf82faf7639e43e86ebfb54d642f
+  KMTIM: 5699eded1c89eac3c64b69e1d900a7547816a13c
+  KMTIMSDK: 14fd326c5527a6b36c97d4e8ad6355635f15f971
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TXIMSDK_iOS: 0d3c292920c96ba08b6fa8efde65c7488eb436a7
-  TXIMSDK_TUIKit_iOS: 7c5a6556929b590e3d2cfb85a865a3c5b28f4d87
 
-PODFILE CHECKSUM: c0206044c01d20a205ba64850e1cee5b53befd14
+PODFILE CHECKSUM: efc8a68434acae23d6b3b9498eeacdafcb42c275
 
 COCOAPODS: 1.8.4

@@ -9,10 +9,10 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 #import <ImSDK/ImSDK.h>
-#import <TXIMSDK_TUIKit_iOS/TUIKit.h>
-#import <TXIMSDK_TUIKit_iOS/THelper.h>
-#import <TXIMSDK_TUIKit_iOS/TUIImageMessageCellData.h>
-#import <TXIMSDK_TUIKit_iOS/TUISystemMessageCellData.h>
+#import "TUIKit.h"
+#import "THelper.h"
+#import "TUIImageMessageCellData.h"
+#import "TUISystemMessageCellData.h"
 
 #import "KMPrescribeMessageCellData.h"
 #import "KMPrescribeMessageCell.h"

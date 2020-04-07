@@ -7,7 +7,7 @@
 
 #import "KMTIMManager.h"
 #import "UIImage+KMTIM.h"
-#import <TXIMSDK_TUIKit_iOS/TUIKit.h>
+#import "TUIKit.h"
 @interface KMTIMManager()
 
 @property(nonatomic,strong) TIMLoginParam * loginParam;
