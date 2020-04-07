@@ -9,10 +9,14 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 #import <ImSDK/ImSDK.h>
-#import "TUIKit.h"
-#import "THelper.h"
-#import "TUIImageMessageCellData.h"
-#import "TUISystemMessageCellData.h"
+#import <KMTIM/TUIKit.h>
+#import <KMTIM/THelper.h>
+#import <KMTIM/TUIImageMessageCellData.h>
+#import <KMTIM/TUISystemMessageCellData.h>
+//#import "TUIKit.h"
+//#import "THelper.h"
+//#import "TUIImageMessageCellData.h"
+//#import "TUISystemMessageCellData.h"
 
 #import "KMPrescribeMessageCellData.h"
 #import "KMPrescribeMessageCell.h"

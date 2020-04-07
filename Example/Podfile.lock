@@ -24,24 +24,24 @@ PODS:
     - SDWebImage
     - Toast (= 4.0.0)
     - TXIMSDK_iOS
-  - KMTIMSDK (0.1.3):
-    - KMTIMSDK/KMIMBase (= 0.1.3)
-    - KMTIMSDK/KMPatientInfo (= 0.1.3)
-    - KMTIMSDK/KMSeePrescribe (= 0.1.3)
-    - KMTIMSDK/KMTools (= 0.1.3)
-  - KMTIMSDK/KMIMBase (0.1.3):
+  - KMTIMSDK (0.1.4):
+    - KMTIMSDK/KMIMBase (= 0.1.4)
+    - KMTIMSDK/KMPatientInfo (= 0.1.4)
+    - KMTIMSDK/KMSeePrescribe (= 0.1.4)
+    - KMTIMSDK/KMTools (= 0.1.4)
+  - KMTIMSDK/KMIMBase (0.1.4):
     - KMTIM
     - KMTIMSDK/KMTools
     - SDWebImage
-  - KMTIMSDK/KMPatientInfo (0.1.3):
+  - KMTIMSDK/KMPatientInfo (0.1.4):
     - KMTIMSDK/KMTools
     - Masonry
     - SDWebImage
-  - KMTIMSDK/KMSeePrescribe (0.1.3):
+  - KMTIMSDK/KMSeePrescribe (0.1.4):
     - KMNetwork
     - KMTIMSDK/KMTools
     - Masonry
-  - KMTIMSDK/KMTools (0.1.3)
+  - KMTIMSDK/KMTools (0.1.4)
   - Masonry (1.1.0)
   - MMLayout (0.2.0)
   - ReactiveObjC (3.1.1)
@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   KMNetwork: b1f45ec78c5509b70638a08b2d8ba3dd85966dda
   KMOnlineWeb: 53490143e64dcf82faf7639e43e86ebfb54d642f
   KMTIM: 5699eded1c89eac3c64b69e1d900a7547816a13c
-  KMTIMSDK: 14fd326c5527a6b36c97d4e8ad6355635f15f971
+  KMTIMSDK: fe62a65d7139d5997bb53edb05125b4aacfa59ca
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
@@ -103,6 +103,6 @@ SPEC CHECKSUMS:
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TXIMSDK_iOS: 0d3c292920c96ba08b6fa8efde65c7488eb436a7
 
-PODFILE CHECKSUM: efc8a68434acae23d6b3b9498eeacdafcb42c275
+PODFILE CHECKSUM: 8d2aa0adb4318e59b59b3e4458b2c898704b3bf2
 
 COCOAPODS: 1.8.4

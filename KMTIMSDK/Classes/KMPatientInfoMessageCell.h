@@ -7,7 +7,8 @@
 
 
 #import <UIKit/UIKit.h>
-#import "TUIMessageCell.h"
+//#import "TUIMessageCell.h"
+#import <KMTIM/TUIMessageCell.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KMPatientInfoMessageCell : TUIMessageCell
