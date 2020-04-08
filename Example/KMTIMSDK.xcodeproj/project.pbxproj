@@ -261,8 +261,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-KMTIMSDK_Example/Pods-KMTIMSDK_Example-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/KMAgoraRtc/AgoraRtc.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/KMOnlineWeb/KMOnlineWeb.bundle",
-				"${PODS_ROOT}/KMTIM/TUIKit/Resources/TUIKitFace.bundle",
-				"${PODS_ROOT}/KMTIM/TUIKit/Resources/TUIKitResource.bundle",
+				"${PODS_ROOT}/../../../KMTIM/TUIKit/Resources/TUIKitFace.bundle",
+				"${PODS_ROOT}/../../../KMTIM/TUIKit/Resources/TUIKitResource.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/KMTIMSDK/KMTIMImage.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
