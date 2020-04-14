@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KMTIMSDK'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'A short description of KMTIMSDK.'
   
   s.description      = <<-DESC
@@ -24,31 +24,39 @@ TODO: Add long description of the pod here.
   s.static_framework = true
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64'}
   s.resource_bundles = {
-    'KMTIMImage' => ['KMTIMSDK/Assets/*']
+    'KMTIMSDK' => ['KMTIMSDK/Assets/*.xcassets']
   }
+#  s.resource = ['KMTIMSDK/Assets/*']
   
-  s.subspec 'KMTools' do |ss|
-    ss.source_files = 'KMTIMSDK/KMTools/**/*.{h,m}'
-    end
+#  s.subspec 'KMTools' do |ss|
+#    ss.source_files = 'KMTIMSDK/KMTools/**/*.{h,m}'
+#    end
   
-  s.subspec 'KMPatientInfo' do |ss|
-    ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'
-    ss.dependency 'Masonry'
-    ss.dependency 'SDWebImage'
-    ss.dependency 'KMTIMSDK/KMTools'
-    end
-  s.subspec 'KMSeePrescribe' do |ss|
-    ss.source_files = 'KMTIMSDK/KMSeePrescribe/**/*.{h,m}'
-    ss.dependency 'Masonry'
-    ss.dependency 'KMNetwork'
-    ss.dependency 'KMTIMSDK/KMTools'
-    end
+#  s.subspec 'KMPatientInfo' do |ss|
+#    ss.source_files = 'KMTIMSDK/KMPatientInfo/**/*.{h,m}'
+#    ss.dependency 'Masonry'
+#    ss.dependency 'SDWebImage'
+#    ss.dependency 'KMTIMSDK/KMTools'
+#    end
+#  s.subspec 'KMSeePrescribe' do |ss|
+#    ss.source_files = 'KMTIMSDK/KMSeePrescribe/**/*.{h,m}'
+#    ss.dependency 'Masonry'
+#    ss.dependency 'KMNetwork'
+#    ss.dependency 'KMTIMSDK/KMTools'
+#    end
   
-  s.subspec 'KMIMBase' do |ss|
-    ss.source_files = 'KMTIMSDK/Classes/**/*.{h,m}'
-#    ss.dependency 'TXIMSDK_TUIKit_iOS'
-    ss.dependency 'KMTIM'
-    ss.dependency 'SDWebImage'
-    ss.dependency 'KMTIMSDK/KMTools'
-    end
+#  s.subspec 'KMIMBase' do |ss|
+#    ss.source_files = 'KMTIMSDK/Classes/**/*.{swift}'
+##    ss.dependency 'TXIMSDK_TUIKit_iOS'
+#    ss.dependency 'SnapKit'
+#    ss.dependency 'KMTIM'
+##    ss.dependency 'SDWebImage'
+#    ss.dependency 'Kingfisher'
+##    ss.dependency 'KMTIMSDK/KMTools'
+#    end
+  
+    s.source_files = 'KMTIMSDK/Classes/**/*.{swift}'
+    s.dependency 'SnapKit'
+    s.dependency 'KMTIM'
+    s.dependency 'Kingfisher'
 end
