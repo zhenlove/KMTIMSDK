@@ -6,6 +6,7 @@ target 'KMTIMSDK_Example' do
   pod 'KMTIMSDK', :path => '../'
   pod 'KMOnlineWeb',:path => '/Users/ed/github/KMOnlineWeb/'
 #  pod 'KMTIM',:path => '/Users/ed/github/KMTIM/'
+#  pod 'KMModule', :modular_headers => true,:path => '/Users/ed/github/KMModule'
   pod 'CocoaAsyncSocket','7.6.3', :modular_headers => true, :configurations => ['Debug']
   pod 'Bagel','1.3.2', :configurations => ['Debug']
 end

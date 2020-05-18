@@ -9,6 +9,7 @@
 #import "KMLoginController.h"
 @import KMNetwork;
 @import KMOnlineWeb;
+//@import KMModule;
 @interface KMLoginController ()
 @end
 
@@ -46,7 +47,16 @@
 //                                        showViewController:self];
     [[OnlineWebManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
                                                 userInfoDic:dic
-                                         showViewController:self];
+                                             fromNavControl:self.navigationController];
+//    __weak typeof(self) weakSelf = self;
+//    [OnlineWebManager sharedInstance].patientInfoBlock = ^(NSDictionary *info){
+//        KMPatientInfoVC *infoVC = [[KMPatientInfoVC alloc]init];
+//        [weakSelf.navigationController pushViewController:infoVC animated:YES];
+//    };
+//    [OnlineWebManager sharedInstance].prescribeBlock = ^(NSString * url, NSString * opdRegisterID) {
+//        KMIMWebViewController *webView = [[KMIMWebViewController alloc]init];
+//        [weakSelf.navigationController pushViewController:webView animated:YES];
+//    };
 }
 
 

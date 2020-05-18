@@ -7,8 +7,25 @@
 
 import UIKit
 import TXIMSDK_TUIKit_iOS
+
+@objcMembers public class RoomStateChanged :NSObject, Codable {
+
+    public var ChannelID : Int?
+    public var ChargingState : Int?
+    public var DisableWebSdkInteroperability : Bool?
+    public var Duration : Int?
+    public var ServiceID : String?
+    public var ServiceType : Int?
+    public var State : Int?
+    public var TotalTime : Int?
+    public var WebSdkType : Int?
+
+
+}
+
+
 public protocol RoomStateListenerDelegate :NSObject{
-    func listener(channelID:String,customElem:[String:Any]?)
+    func listener(channelID:Int?,customElem:RoomStateChanged)
 }
 
 public typealias Succ = ()->Void
@@ -31,16 +48,15 @@ public class KMIMManager: NSObject {
     }
     
     @objc func onNewMessage(notification:Notification){
-        if let msgArr = notification.object as? [TIMMessage] {
-            for msg in msgArr {
-                for i in 0..<msg.elemCount() {
-                    if let elem = msg.getElem(i) {
-                        if elem.isKind(of: TIMCustomElem.self) {
-                            if let customElem = elem as? TIMCustomElem {
-                                if let dic = try? JSONSerialization.jsonObject(with: customElem.data, options: .mutableContainers) as? [String:Any?] {
+            if let msgArr = notification.object as? [TIMMessage] {
+                for msg in msgArr {
+                    for i in 0..<msg.elemCount() {
+                        if let elem = msg.getElem(i) {
+                            if elem.isKind(of: TIMCustomElem.self) {
+                                if let customElem = elem as? TIMCustomElem {
                                     if customElem.ext == "Room.StateChanged" {
-                                        if let channelID = dic["ChannelID"] as? String {
-                                            delegate?.listener(channelID: channelID, customElem: dic)
+                                        if let model = try? JSONDecoder().decode(RoomStateChanged.self, from: customElem.data){
+                                            delegate?.listener(channelID: model.ChannelID, customElem: model)
                                         }
                                     }
                                 }
@@ -50,7 +66,6 @@ public class KMIMManager: NSObject {
                 }
             }
         }
-    }
     
     func setup(_ appid:Int) {
         TUIKit.sharedInstance()?.setup(withAppId: appid, logLevel: .LOG_NONE)
