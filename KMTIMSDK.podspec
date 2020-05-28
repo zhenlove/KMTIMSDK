@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KMTIMSDK'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'A short description of KMTIMSDK.'
   
   s.description      = <<-DESC
@@ -57,7 +57,7 @@ TODO: Add long description of the pod here.
 #    end
   
     s.source_files = 'KMTIMSDK/Classes/**/*.{swift}'
-    s.dependency 'SnapKit'
-    s.dependency 'KMTIM'
-    s.dependency 'Kingfisher'
+    s.dependency 'SnapKit','4.2.0'
+    s.dependency 'KMTIM','0.1.1'
+    s.dependency 'Kingfisher','4.10.1'
 end
