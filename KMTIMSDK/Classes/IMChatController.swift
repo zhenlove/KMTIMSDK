@@ -132,25 +132,6 @@ public class IMChatController: UIViewController {
 
 }
 
-extension UIViewController:UIGestureRecognizerDelegate {
-    
-    
-    @_dynamicReplacement(for:viewDidAppear(_:))
-    func swizzle_viewDidAppear(_ animated: Bool) {
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let vc = navigationController?.topViewController as? IMChatControllerDelegate{
-            return vc.clickeBackBtnController()
-        }
-        if let vc = navigationController?.topViewController as? IMChatController {
-            return vc.delegate?.clickeBackBtnController() ?? true
-        }
-        return true
-    }
-}
-
 
 extension IMChatController:TMessageControllerDelegate {
     public func didTap(in controller: TUIMessageController!) {
@@ -353,7 +334,7 @@ extension Dictionary {
 
 
 extension IMChatController:BackHandler {
-    func navigationShouldPopOnBack() -> Bool {
+    public func navigationShouldPopOnBack() -> Bool {
         if let dele = delegate {
             return dele.clickeBackBtnController()
         }

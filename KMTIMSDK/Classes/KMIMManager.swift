@@ -31,7 +31,7 @@ public protocol RoomStateListenerDelegate :NSObject{
 public typealias Succ = ()->Void
 public typealias Fail = (_ code:Int32,_ msg:String?)->Void
 
-protocol BackHandler:NSObject {
+public protocol BackHandler:NSObject {
     func navigationShouldPopOnBack() -> Bool
 }
 
@@ -173,5 +173,28 @@ extension UINavigationController:UINavigationBarDelegate {
             }
         }
         return false
+    }
+}
+
+extension UIViewController:UIGestureRecognizerDelegate {
+    
+    
+    @_dynamicReplacement(for:viewDidAppear(_:))
+    func swizzle_viewDidAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        guard let vc = navigationController?.topViewController else {
+            return true
+        }
+        
+        guard let newVC = vc as? BackHandler else {
+            return true
+        }
+        
+        return newVC.navigationShouldPopOnBack()
+        
     }
 }
