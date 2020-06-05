@@ -1,6 +1,6 @@
 # KMTIMSDK
 
-[![CI Status](https://img.shields.io/travis/zhenlove/KMTIMSDK.svg?style=flat)](https://travis-ci.org/zhenlove/KMTIMSDK)
+[![CI Status](https://img.shields.io/travis/zhenlove/KMTIMSDK.svg?style=flat)](https://travis-ci.com/zhenlove/KMTIMSDK)
 [![Version](https://img.shields.io/cocoapods/v/KMTIMSDK.svg?style=flat)](https://cocoapods.org/pods/KMTIMSDK)
 [![License](https://img.shields.io/cocoapods/l/KMTIMSDK.svg?style=flat)](https://cocoapods.org/pods/KMTIMSDK)
 [![Platform](https://img.shields.io/cocoapods/p/KMTIMSDK.svg?style=flat)](https://cocoapods.org/pods/KMTIMSDK)
