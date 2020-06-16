@@ -20,7 +20,6 @@ TODO: Add long description of the pod here.
   s.author           = { 'zhenlove' => '121910347@qq.com' }
   s.source           = { :git => 'https://github.com/zhenlove/KMTIMSDK.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
-#  s.pod_target_xcconfig = {'DEFINES_MODULE' => 'YES'}
   s.static_framework = true
   s.swift_version = '5.0'
   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64'}
