@@ -10,47 +10,45 @@ import ImSDK
 import MobileCoreServices
 import TXIMSDK_TUIKit_iOS
 import SnapKit
+import KMTools
 
 //咨询状态(0-未筛选、1-未领取、2-已领取、3-未回复、4-已回复、5-已完成)
-public enum ConsultatingState :Int {
+@objc(ConsultatingState) public enum ConsultatingState :Int {
     
-    case _default = -1
-    case _nfiltered = 0
-    case _unclaimed = 1
-    case _claimed = 2
-    case _notReply = 3
-    case _replied = 4
-    case _finished = 5
+    case _Aefault = -1
+    case _Filtered = 0
+    case _Nclaimed = 1
+    case _Claimed = 2
+    case _NotReply = 3
+    case _Replied = 4
+    case _Finished = 5
 }
 
-extension UIDevice {
-    static func getBottomSafeAreaHeight() -> CGFloat {
-        if #available(iOS 11.0, *) {
-            return UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0
-        } else {
-            return 0.0
-        }
-    }
+@objc(ChatType) public enum ChatType :Int {
+    case _Audio = 0 //音频看诊
+    case _Video = 1 //视频看诊
+    case _Message = 2 //图文看诊
 }
 
 
-let IITextView_Height:CGFloat = 49.0
-let IIBottom_SafeHeight:CGFloat = UIDevice.getBottomSafeAreaHeight()
+
+fileprivate let IITextView_Height:CGFloat = 49.0
+fileprivate let IIBottom_SafeHeight:CGFloat = UIDevice.getBottomSafeAreaHeight()
 
 
-public protocol IMChatControllerDelegate: NSObject {
+@objc public protocol IMChatControllerDelegate: NSObjectProtocol {
     func clickePatientInfo(_ infoDic:[String:Any])
     func clickePrescribe(_ prescribeUrl:String?, _ opdRegisterID:String?)
-    func clickeBackBtnController() -> Bool
+    func hangUpConsultation()
 }
 
 
 public class IMChatController: UIViewController {
 
-    public var state:ConsultatingState?
-    public var convId:String!
-    public weak var delegate:IMChatControllerDelegate?
-    
+    @objc public var state:ConsultatingState = ._Aefault
+    @objc public var convId:String!
+    @objc public weak var delegate:IMChatControllerDelegate?
+    @objc public var chatType:ChatType = ._Message
     
     lazy var conversation = { TIMManager.sharedInstance()?.getConversation(.GROUP, receiver: self.convId) }()
     lazy var moreMenus = { [TUIInputMoreCellData.photo,TUIInputMoreCellData.picture] }()
@@ -154,7 +152,7 @@ extension IMChatController:TMessageControllerDelegate {
         if let elem = data.getElem(0) {
             if elem.isKind(of: TIMCustomElem.self) {
                 if let customElem = elem as? TIMCustomElem,
-                    var dic = Dictionary<String, Any>.ToJson(customElem.data){
+                    var dic = KMTools.ToJson(customElem.data){
                     
                     if customElem.ext == "User.DiseaseDesc" {//病情描述
                         let cellData = PatientInfoCellData(direction: data.isSelf() ? .MsgDirectionOutgoing : .MsgDirectionIncoming)
@@ -326,18 +324,32 @@ extension IMChatController: UIImagePickerControllerDelegate & UINavigationContro
     
 }
 
-extension Dictionary {
-    static func ToJson(_ data:Data) -> Self? {
-        return try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? Dictionary<Key, Value>
-    }
-}
+
 
 
 extension IMChatController:BackHandler {
-    public func navigationShouldPopOnBack() -> Bool {
-        if let dele = delegate {
-            return dele.clickeBackBtnController()
+    
+    /// 挂断问诊
+    func showTipInquiry() {
+        let alert = UIAlertController(title: nil, message: "你确定挂断问诊吗？", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "确定", style: .default) { [weak self] _ in
+            self?.delegate?.hangUpConsultation()
+            NotificationCenter.default.post(name: Notification.Name("hangUpConsultation"), object: nil)
+            
+            self?.navigationController?.popViewController(animated: true)
         }
-        return true
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
+    public func navigationShouldPopOnBack() -> Bool {
+        if chatType != ._Message {
+            showTipInquiry()
+            return false
+        }else{
+            return true
+        }
     }
 }
