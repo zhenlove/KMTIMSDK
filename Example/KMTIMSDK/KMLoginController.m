@@ -8,7 +8,7 @@
 
 #import "KMLoginController.h"
 @import KMNetwork;
-@import KMOnlineWeb;
+//@import KMOnlineWeb;
 //@import KMModule;
 @interface KMLoginController ()
 @end
@@ -35,19 +35,19 @@
 //@"http://yruser.kmwlyy.com/h5/"
 //@"http://pruser.kmwlyy.com/h5/yd/"
     
-    NSDictionary * dic = @{@"Number":@"wangge",
-                           @"Name":@"",
-                           @"Mobile":@"",
-                           @"IdNumber":@"",
-                           @"HeadUrl":@"",
-                           @"OrgID":@"B1F0AF7AB9624847A3DDAFD573E2ECF0"};
+//    NSDictionary * dic = @{@"Number":@"wangge",
+//                           @"Name":@"",
+//                           @"Mobile":@"",
+//                           @"IdNumber":@"",
+//                           @"HeadUrl":@"",
+//                           @"OrgID":@"B1F0AF7AB9624847A3DDAFD573E2ECF0"};
 
 //    [[KMOnlineManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
 //                                                   withDic:dic
 //                                        showViewController:self];
-    [[OnlineWebManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
-                                                userInfoDic:dic
-                                             fromNavControl:self.navigationController];
+//    [[OnlineWebManager sharedInstance] reloadWebViewWithUrl:@"http://pruser.kmwlyy.com/h5/"
+//                                                userInfoDic:dic
+//                                             fromNavControl:self.navigationController];
 //    __weak typeof(self) weakSelf = self;
 //    [OnlineWebManager sharedInstance].patientInfoBlock = ^(NSDictionary *info){
 //        KMPatientInfoVC *infoVC = [[KMPatientInfoVC alloc]init];

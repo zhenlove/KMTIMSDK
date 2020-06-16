@@ -6,7 +6,7 @@ platform :ios, '9.0'
 
 target 'KMTIMSDK_Example' do
   pod 'KMTIMSDK', :path => '../'
-  pod 'KMOnlineWeb'
+#  pod 'KMOnlineWeb'
 #  pod 'KMOnlineWeb',:path => '/Users/ed/github/KMOnlineWeb/'
 #  pod 'KMTIM',:path => '/Users/ed/github/KMTIM/'
 #  pod 'KMModule', :modular_headers => true,:path => '/Users/ed/github/KMModule'
